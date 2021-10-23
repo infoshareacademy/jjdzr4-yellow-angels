@@ -6,31 +6,12 @@ public class MAinTest {
 
     public static void main(String[] args) {
 
+        Person person = new Person("Aleksander", 36);
 
-        PersonTest personTest = new PersonTest("Rob001", 123456.998, 886);
-
-        String ooo = ooo(personTest);
-        System.out.println(ooo);
-
-
-    }
-
-
-    public static String ooo (Object object) {
-
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String s = objectMapper.writeValueAsString(object);
-            return s;
-
-
-        } catch (Exception ex) {
-
-
-        }
-
-return null;
+        JsonToObiect jsonToObiect = new JsonToObiect();
+        Person person1 = jsonToObiect.jSonToObiectUsingFileReader111(Person.class);
+        String name = person1.getName();
+        System.out.println("imię: " + name);
     }
 
 }
