@@ -1,6 +1,7 @@
 package pl.infoshare;
 
 import pl.infoshare.service.AddItemService;
+import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.Item;
 import pl.infoshare.model.Producer;
@@ -78,6 +79,7 @@ public class Menu {
             case 1:
 //                KlasaJakasTam;
                 System.out.println("Sprawdzam stan magazynu...");
+                System.out.println(DataFactory.getINSTANCE.getItems().toString());
                 break;
             case 2:
                 System.out.println("Przechodzę do dodawania produktu...");
@@ -89,7 +91,7 @@ public class Menu {
                 break;
             case 4:
 //                Edycja produktu
-                ItemService.editItem(0);
+                ItemService.editItem();
                 break;
 
         }

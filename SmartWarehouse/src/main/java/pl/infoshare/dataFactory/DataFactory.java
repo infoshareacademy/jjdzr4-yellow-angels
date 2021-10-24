@@ -1,7 +1,6 @@
 package pl.infoshare.dataFactory;
 
 import pl.infoshare.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,16 +36,23 @@ public class DataFactory {
         ));
     }
 
-    public ItemComponent getItemById(int id){
-        for (ItemComponent item : items){
-            if(id == item.getId()){
-                return item;
-            }
-        }
-        return null;
+    public ArrayList<ItemComponent> getItems() {
+        return items;
     }
 
+    public ArrayList<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(ArrayList<Category> categories) {
+        this.categories = categories;
+    }
 
+    public ArrayList<Producer> getProducers() {
+        return producers;
+    }
 
+    public void setProducers(ArrayList<Producer> producers) {
+        this.producers = producers;
+    }
 }
