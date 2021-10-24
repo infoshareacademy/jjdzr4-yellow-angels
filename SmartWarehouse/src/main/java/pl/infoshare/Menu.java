@@ -1,6 +1,8 @@
 package pl.infoshare;
 
+
 import pl.infoshare.service.AddItemService;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -18,12 +20,16 @@ public class Menu {
         enterIntoMenuOptions(number);
     }
 
+
     private final List<String> fillMenuOptions() {
-        return List.of("0. Wyjście z programu",
-                "1. Sprawdz stan magazynu ",
-                "2. Dodaj produkt",
-                "3. Usuń produkt",
-                "4. Ogarnij sztaplare");
+
+        menuOptions.add("0. Wyjście z programu");
+        menuOptions.add("1. Sprawdz stan magazynu ");
+        menuOptions.add("2. Dodaj produkt");
+        menuOptions.add("3. Usuń produkt");
+        menuOptions.add("4. Edytuj produkt");
+
+        return menuOptions;
     }
 
     private void displayMenu() {
@@ -47,7 +53,7 @@ public class Menu {
             Scanner menuNumber = new Scanner(System.in);
             System.out.println("Podaj nr menu gdzie chcesz wejsc: ");
             result = menuNumber.nextInt();
-            if ( result > menuOptions.size() || result < 0){
+            if (result > menuOptions.size() || result < 0) {
                 System.out.println("błędny nr menu");
                 getMenuNumber();
             }
@@ -59,9 +65,9 @@ public class Menu {
         return result;
     }
 
-    private void enterIntoMenuOptions(int source){
+    private void enterIntoMenuOptions(int source) {
 
-        switch (source){
+        switch (source) {
             case 0:
                 System.out.println("Zamykam program");
                 return;
@@ -78,8 +84,7 @@ public class Menu {
                 System.out.println("Usuwam produkt...");
                 break;
             case 4:
-//                KlasaJakasTam4;
-                System.out.println("Wzywam sztaplare");
+//                Edycja produktu
                 break;
 
         }

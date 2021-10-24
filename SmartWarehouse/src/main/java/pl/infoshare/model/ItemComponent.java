@@ -18,14 +18,25 @@ public abstract class ItemComponent {
         this.producer = producer;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Producer getProducer() {
+        return producer;
+    }
 
     public void setProducer(Producer producer) {
         this.producer = producer;
@@ -35,4 +46,13 @@ public abstract class ItemComponent {
         this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return "ItemComponent{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", producer=" + producer +
+                '}';
+    }
 }
