@@ -8,4 +8,10 @@ public class Producer {
     public Producer(String name) {
         this.name = name;
     }
+
+    public Producer(String name, Address address) {
+        this.name = name;
+        this.address = address;
+
+    }
 }

@@ -12,10 +12,25 @@ public abstract class ItemComponent {
     private LocalDateTime expirationDate;
     private Warehouse localization;
 
+    public ItemComponent(int id, String name, Category category, Producer producer) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.producer = producer;
+    }
+
     public ItemComponent(String name, Category category, Producer producer) {
         this.name = name;
         this.category = category;
         this.producer = producer;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

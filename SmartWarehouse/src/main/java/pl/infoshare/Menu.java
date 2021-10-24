@@ -1,7 +1,11 @@
 package pl.infoshare;
 
-
 import pl.infoshare.service.AddItemService;
+import pl.infoshare.model.Category;
+import pl.infoshare.model.Item;
+import pl.infoshare.model.Producer;
+import pl.infoshare.services.ItemService;
+
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -85,6 +89,7 @@ public class Menu {
                 break;
             case 4:
 //                Edycja produktu
+                ItemService.editItem(0);
                 break;
 
         }

@@ -1,17 +1,24 @@
 package pl.infoshare.services;
 
+import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.ItemComponent;
 
 import java.util.Scanner;
 
 public class ItemService {
-    
 
-    public static ItemComponent editItem(ItemComponent item){
 
-        item.toString();
+    public static ItemComponent findItem(int id){
 
-        int input = 0;
+        return null;
+    }
+
+    public static void editItem(int id){
+
+        DataFactory dataFactory = DataFactory.getINSTANCE;
+        ItemComponent item = dataFactory.getItemById(id);
+
+        int input;
         do{
             printMenu();
             Scanner scanner = new Scanner(System.in);
@@ -30,8 +37,6 @@ public class ItemService {
                     break;
             }
         }while (input!=0);
-
-        return item;
     }
 
     private static void printMenu(){
