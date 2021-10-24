@@ -13,11 +13,9 @@ public abstract class ItemComponent {
     private Warehouse localization;
 
     public ItemComponent(String name, Category category, Producer producer) {
-
         this.name = name;
         this.category = category;
         this.producer = producer;
-
     }
 
     public void setCategory(Category category) {

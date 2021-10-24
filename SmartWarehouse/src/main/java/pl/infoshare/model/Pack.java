@@ -1,6 +1,5 @@
 package pl.infoshare.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Pack extends ItemComponent{
@@ -10,8 +9,8 @@ public class Pack extends ItemComponent{
         super(name, category, producer);
     }
 
-
     public void addComponent(ItemComponent item){
         items.add(item);
     }
+
 }
