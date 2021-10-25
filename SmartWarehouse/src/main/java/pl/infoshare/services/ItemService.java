@@ -10,47 +10,51 @@ public class ItemService {
 
     private static final DataFactory dataFactory = DataFactory.getINSTANCE;
 
-    public static void editItem(){
+    public static void editItem() {
 
         int input;
         ItemComponent item = getItemById();
-
-        do{
-            printMenu();
-            Scanner scanner = new Scanner(System.in);
-            input = scanner.nextInt();
-            switch (input){
-                case 0:
-                    break;
-                case 1:
-                    editName(item);
-                    break;
-                case 2:
-                    editCategory(item);
-                    break;
-                case 3:
-                    editProducer(item);
-                    break;
-            }
-        }while (input!=0);
+        if (item == null) {
+            System.out.println("Brak produktu o takim id.");
+            editItem();
+        } else {
+            do {
+                printMenu();
+                Scanner scanner = new Scanner(System.in);
+                input = scanner.nextInt();
+                switch (input) {
+                    case 0:
+                        break;
+                    case 1:
+                        editName(item);
+                        break;
+                    case 2:
+                        editCategory(item);
+                        break;
+                    case 3:
+                        editProducer(item);
+                        break;
+                }
+            } while (input != 0);
+        }
     }
 
-    private static ItemComponent getItemById(){
+    private static ItemComponent getItemById() {
 
         System.out.println("Podaj id produktu: ");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
 
         List<ItemComponent> items = dataFactory.getItems();
-        for (ItemComponent item : items){
-            if(id == item.getId()){
+        for (ItemComponent item : items) {
+            if (id == item.getId()) {
                 return item;
             }
         }
         return null;
     }
 
-    private static void printMenu(){
+    private static void printMenu() {
         System.out.println("Co chcesz zmienić?");
         System.out.println("0. Nic -> Wyjście.");
         System.out.println("1. Nazwa");
@@ -58,7 +62,7 @@ public class ItemService {
         System.out.println("3. Producent");
     }
 
-    private static void editName(ItemComponent item){
+    private static void editName(ItemComponent item) {
         System.out.println("Podaj nową nazwę: ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
