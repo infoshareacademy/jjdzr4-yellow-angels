@@ -9,9 +9,28 @@ public class Producer {
         this.name = name;
     }
 
-    public Producer(String name, Address address) {
+    public Producer(int id, String name, Address address) {
+        this.id = id;
         this.name = name;
         this.address = address;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    @Override
+    public String toString() {
+        return id +
+                ". " + name + '\'' +
+                ", address=" + address;
     }
 }

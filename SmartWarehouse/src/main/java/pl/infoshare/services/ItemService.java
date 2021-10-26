@@ -3,6 +3,7 @@ package pl.infoshare.services;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
+import pl.infoshare.model.Producer;
 
 import java.util.List;
 import java.util.Scanner;
@@ -93,6 +94,24 @@ public class ItemService {
     }
 
     private static void editProducer(ItemComponent item) {
+        List<Producer> producers = dataFactory.getProducers();
+        System.out.println(producers.toString());
+        System.out.println("Aktualny producent: " + item.getProducer().getName());
+        System.out.println("Wskaż nowego producenta: ");
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+
+        boolean nothingChanged = true;
+        for (Producer producer : producers) {
+            if (input == producer.getId()) {
+                item.setProducer(producers.get(input));
+                System.out.println("Zaktualizowano producenta produktu.");
+                nothingChanged = false;
+            }
+        }
+        if (nothingChanged) {
+            System.out.println("Brak producenta o wskazanym id.");
+        }
     }
 
 }
