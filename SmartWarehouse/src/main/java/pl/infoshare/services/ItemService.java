@@ -1,6 +1,7 @@
 package pl.infoshare.services;
 
 import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
 
 import java.util.List;
@@ -70,7 +71,24 @@ public class ItemService {
     }
 
     private static void editCategory(ItemComponent item) {
+        List<Category> categories = dataFactory.getCategories();
+        System.out.println(categories.toString());
+        System.out.println("Aktualna kategoria: "+item.getCategory().getName());
+        System.out.println("Wskaż nową kategorię: ");
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
 
+        boolean nothingChanged = true;
+        for(Category category : categories){
+            if(input == category.getId()){
+                item.setCategory(categories.get(input));
+                System.out.println("Zaktualizowano kategorię produktu.");
+                nothingChanged = false;
+            }
+        }
+        if(nothingChanged){
+            System.out.println("Brak kategorii o wskazanym id.");
+        }
     }
 
     private static void editProducer(ItemComponent item) {

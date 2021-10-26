@@ -13,9 +13,9 @@ public class DataFactory {
 
     private DataFactory() {
 
-        Category c1 = new Category("category 1");
-        Category c2 = new Category("category 2");
-        Category c3 = new Category("category 3");
+        Category c1 = new Category(0, "category 0");
+        Category c2 = new Category(1, "category 1");
+        Category c3 = new Category(2, "category 2");
 
         Producer p1 = new Producer("producer 1", null);
         Producer p2 = new Producer("producer 2", null);
