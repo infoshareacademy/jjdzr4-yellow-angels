@@ -1,31 +1,29 @@
 package pl.infoshare;
 
+import pl.infoshare.service.AddItemService;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    private ArrayList<String> menuOptions = new ArrayList<>();
+    private List<String> menuOptions = new ArrayList<>();
+    private final AddItemService itemService = new AddItemService();
 
     public void run() {
         menuOptions = fillMenuOptions();
         displayMenu();
         int number = getMenuNumber();
         enterIntoMenuOptions(number);
-
     }
 
-    private final ArrayList<String> fillMenuOptions() {
-
-        menuOptions.add("0. Wyjście z programu");
-        menuOptions.add("1. Sprawdz stan magazynu ");
-        menuOptions.add("2. Dodaj produkt");
-        menuOptions.add("3. Usuń produkt");
-        menuOptions.add("4. Ogarnij sztaplare");
-
-
-        return menuOptions;
+    private final List<String> fillMenuOptions() {
+        return List.of("0. Wyjście z programu",
+                "1. Sprawdz stan magazynu ",
+                "2. Dodaj produkt",
+                "3. Usuń produkt",
+                "4. Ogarnij sztaplare");
     }
 
     private void displayMenu() {
@@ -72,8 +70,8 @@ public class Menu {
                 System.out.println("Sprawdzam stan magazynu...");
                 break;
             case 2:
-//                KlasaJakasTam2;
                 System.out.println("Przechodzę do dodawania produktu...");
+                itemService.addItem();
                 break;
             case 3:
 //                KlasaJakasTam3;

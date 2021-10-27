@@ -1,5 +1,6 @@
 package pl.infoshare;
 
+
 /**
  * Hello world!
  *
@@ -12,6 +13,5 @@ public class App
 
         Menu menu = new Menu();
         menu.run();
-
     }
 }
