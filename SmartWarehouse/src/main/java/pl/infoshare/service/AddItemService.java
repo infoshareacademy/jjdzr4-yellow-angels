@@ -1,41 +1,41 @@
 package pl.infoshare.service;
 
+import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
-import pl.infoshare.utils.ConsoleInput;
+import pl.infoshare.model.Producer;
+import pl.infoshare.model.UserInputItem;
 
-import java.util.*;
-
-import  pl.infoshare.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 import static pl.infoshare.utils.ConsoleInput.*;
 
-
 public class AddItemService {
 
-       public static ItemComponent addItem() {
-           ItemComponent item = new ItemComponent();
+       List<ItemComponent> items = new ArrayList<>();
+
+       public void addItem() {
 
         System.out.println("Podaj nazwe produktu.");
         String nameInput = getInputUserString();
-        item.setName(nameInput);
         System.out.println("Podaj kategorie produktu.");
         String categoryInput = getInputUserString();
-        item.setCategory(categoryInput);
         System.out.println("Podaj nazwe dostawcy produktu.");
         String supplierInput = getInputUserString();
-        item.setSupplier(supplierInput);
-        System.out.println("Podaj wage produktu.");
-        double weightInput = getInputUserDouble();
-        item.setWeight(weightInput);
-        System.out.println("Podaj ilosc produktu w jednym opakowaniu.");
-        int quantityPerPackagingInput = getInputUserInteger();
-        item.setQuantityPerPackaging(quantityPerPackagingInput);
-        System.out.println("Dodales produkt o nazwie " + nameInput +" z kategorii " + categoryInput +",ktorego dostawca jest " + supplierInput + ".");
-        System.out.println("Waga towaru to " + weightInput + " a ilosc w kazdym opakowaniu to " + quantityPerPackagingInput);
-        System.out.println("Dziekujemy, Twoj produkt zostal dodany.");
 
-        return item;
+        UserInputItem item = new UserInputItem(nameInput,
+                new Category(categoryInput),
+                new Producer(supplierInput));
+
+        items.add(item);
+
+        System.out.println("Dodales produkt o nazwie " + nameInput +" z kategorii " + categoryInput +",ktorego dostawca jest " + supplierInput + ".");
+        System.out.println("Dziekujemy, Twoj produkt zostal dodany.");
+        System.out.println("Liczba dodanych produktow: " + items.size());
 
        }
 
 }
+
+
+
