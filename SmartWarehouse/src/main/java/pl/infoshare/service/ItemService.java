@@ -4,9 +4,9 @@ import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
+import pl.infoshare.utils.ConsoleInput;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class ItemService {
 
@@ -22,8 +22,7 @@ public class ItemService {
         } else {
             do {
                 printMenu();
-                Scanner scanner = new Scanner(System.in);
-                input = scanner.nextInt();
+                input = ConsoleInput.getInputUserInteger();
                 switch (input) {
                     case 0:
                         break;
@@ -44,8 +43,7 @@ public class ItemService {
     private static ItemComponent getItemById() {
 
         System.out.println("Podaj id produktu: ");
-        Scanner scanner = new Scanner(System.in);
-        int id = scanner.nextInt();
+        int id = ConsoleInput.getInputUserInteger();
 
         List<ItemComponent> items = dataFactory.getItems();
         for (ItemComponent item : items) {
@@ -67,8 +65,7 @@ public class ItemService {
     private static void editName(ItemComponent item) {
         System.out.println("Aktualna nazwa: " + item.getName());
         System.out.println("Podaj nową nazwę: ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input = ConsoleInput.getInputUserString();
         item.setName(input);
     }
 
@@ -77,8 +74,7 @@ public class ItemService {
         System.out.println(categories.toString());
         System.out.println("Aktualna kategoria: " + item.getCategory().getName());
         System.out.println("Wskaż nową kategorię: ");
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
+        int input = ConsoleInput.getInputUserInteger();
 
         boolean nothingChanged = true;
         for (Category category : categories) {
@@ -98,8 +94,7 @@ public class ItemService {
         System.out.println(producers.toString());
         System.out.println("Aktualny producent: " + item.getProducer().getName());
         System.out.println("Wskaż nowego producenta: ");
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
+        int input = ConsoleInput.getInputUserInteger();
 
         boolean nothingChanged = true;
         for (Producer producer : producers) {
