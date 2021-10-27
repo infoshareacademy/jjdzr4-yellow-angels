@@ -1,4 +1,4 @@
-package pl.infoshare.services;
+package pl.infoshare.service;
 
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;

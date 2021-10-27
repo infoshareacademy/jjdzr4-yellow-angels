@@ -2,10 +2,7 @@ package pl.infoshare;
 
 import pl.infoshare.service.AddItemService;
 import pl.infoshare.dataFactory.DataFactory;
-import pl.infoshare.model.Category;
-import pl.infoshare.model.Item;
-import pl.infoshare.model.Producer;
-import pl.infoshare.services.ItemService;
+import pl.infoshare.service.ItemService;
 
 
 import java.util.ArrayList;
