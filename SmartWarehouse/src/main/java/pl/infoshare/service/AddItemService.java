@@ -3,7 +3,7 @@ package pl.infoshare.service;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
-import pl.infoshare.model.UserInputItem;
+import pl.infoshare.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class AddItemService {
         System.out.println("Podaj nazwe dostawcy produktu.");
         String supplierInput = getInputUserString();
 
-        UserInputItem item = new UserInputItem(nameInput,
+        Item item = new Item(nameInput,
                 new Category(categoryInput),
                 new Producer(supplierInput));
 
