@@ -12,22 +12,46 @@ public abstract class ItemComponent {
     private LocalDateTime expirationDate;
     private Warehouse localization;
 
-    public ItemComponent(String name, Category category, Producer producer) {
-
+    public ItemComponent(int id, String name, Category category, Producer producer) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.producer = producer;
-
     }
 
-    public void setCategory(Category category) {
+    public ItemComponent(String name, Category category, Producer producer) {
+        this.name = name;
         this.category = category;
+        this.producer = producer;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Producer getProducer() {
+        return producer;
+    }
 
     public void setProducer(Producer producer) {
         this.producer = producer;
@@ -37,4 +61,13 @@ public abstract class ItemComponent {
         this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return "ItemComponent{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", producer=" + producer +
+                '}';
+    }
 }
