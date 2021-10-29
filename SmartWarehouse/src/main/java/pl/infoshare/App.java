@@ -7,6 +7,7 @@ package pl.infoshare;
  */
 public class App 
 {
+
     public static void main( String[] args )
     {
         System.out.println( "Yellow Angels" );
@@ -14,4 +15,5 @@ public class App
         Menu menu = new Menu();
         menu.run();
     }
+
 }
