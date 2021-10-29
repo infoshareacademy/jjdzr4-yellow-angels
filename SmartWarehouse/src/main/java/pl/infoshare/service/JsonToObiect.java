@@ -14,8 +14,8 @@ public class JsonToObiect {
         } catch (Exception e) {
             System.out.println("\nAn error occured. Pease follow the steps below:\n" +
                     "---------------------------------------------------------------------------------------------\n" +
-                    "a) Make sure you entered the correct name of the file you are looking for\n" +
-                    "b) Make sure you have entered the file name only, without any .json extension\n" +
+                    "a) Make sure you entered the correct name of the file you are looking for,\n" +
+                    "b) Make sure you have entered the file name only, without any .json extension.\n" +
                     "---------------------------------------------------------------------------------------------");
         }
         return result;
