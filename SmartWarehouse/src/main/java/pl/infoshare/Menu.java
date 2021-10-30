@@ -1,15 +1,13 @@
 package pl.infoshare;
 
-import pl.infoshare.service.AddItemService;
 import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.service.AddItemService;
 import pl.infoshare.service.ItemService;
 import pl.infoshare.service.SearchEngine;
-
+import pl.infoshare.utils.ConsoleInput;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Menu {
 
@@ -52,20 +50,16 @@ public class Menu {
     private int getMenuNumber() {
 
 //        2. Pobieranie nr menu
-        int result = 0;
-        try {
-            Scanner menuNumber = new Scanner(System.in);
+        int result;
+        boolean condition;
+        do {
             System.out.println("Podaj nr menu gdzie chcesz wejsc: ");
-            result = menuNumber.nextInt();
-            if (result > menuOptions.size() || result < 0) {
-                System.out.println("błędny nr menu");
-                getMenuNumber();
+            result = ConsoleInput.getInputUserInteger();
+            condition = result > menuOptions.size() || result < 0;
+            if (condition) {
+                System.out.println("Brak takiego numeru w menu.");
             }
-        } catch (InputMismatchException e) {
-            System.out.println("błąd, wprowadz cyfre");
-            getMenuNumber();
-        }
-
+        } while (condition);
         return result;
     }
 
