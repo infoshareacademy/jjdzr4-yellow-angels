@@ -21,8 +21,9 @@ public class DataFactory {
         Producer p1 = new Producer(1, "producer 1", null);
         Producer p2 = new Producer(2, "producer 2", null);
 
-        items = new ArrayList<>(List.of(
+        items = new ArrayList<ItemComponent>(List.of(
                 new Item(1,"Item 1", c1, p1),
+                new Item(6, "Item 11", c1,p1),
                 new Item(2,"Item 2", c1, p2),
                 new Item(3,"Item 3", c2, p0),
                 new Item(4,"Item 4", c0, p1),
