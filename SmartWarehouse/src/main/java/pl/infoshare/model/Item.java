@@ -1,9 +1,14 @@
 package pl.infoshare.model;
 
-public class Item extends ItemComponent{
+import java.io.Serializable;
+
+public class Item extends ItemComponent implements Serializable {
 
 
-
+//DODAŁEM:
+private Item() {
+    super();
+}
 
     public Item(String name, Category category, Producer producer) {
         super(name, category, producer);
@@ -12,4 +17,16 @@ public class Item extends ItemComponent{
     public Item(int id, String name, Category category, Producer producer) {
         super(id, name, category, producer);
     }
+
+    //DODAŁEM:
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", category=" + getCategory() +
+                ", producer=" + getProducer() +
+                '}';
+    }
+
 }

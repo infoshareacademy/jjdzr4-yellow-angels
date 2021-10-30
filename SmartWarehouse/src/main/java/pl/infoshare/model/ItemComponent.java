@@ -12,6 +12,10 @@ public abstract class ItemComponent {
     private LocalDateTime expirationDate;
     private Warehouse localization;
 
+    //DODAŁEM:
+    protected ItemComponent() {
+    }
+
     public ItemComponent(int id, String name, Category category, Producer producer) {
         this.id = id;
         this.name = name;
@@ -61,13 +65,5 @@ public abstract class ItemComponent {
         this.weight = weight;
     }
 
-    @Override
-    public String toString() {
-        return "ItemComponent{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", category=" + category +
-                ", producer=" + producer +
-                '}';
-    }
+
 }

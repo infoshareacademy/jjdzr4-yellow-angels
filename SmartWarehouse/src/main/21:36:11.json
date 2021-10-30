@@ -1,0 +1,20 @@
+{
+  "id" : 0,
+  "name" : "Item111",
+  "category" : {
+    "id" : 1,
+    "name" : "Kategoria1"
+  },
+  "producer" : {
+    "id" : 1,
+    "name" : "Prod001",
+    "address" : {
+      "country" : "Polska",
+      "city" : null,
+      "postCode" : null,
+      "street" : null,
+      "houseNumber" : null,
+      "flatNumber" : null
+    }
+  }
+}

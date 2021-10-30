@@ -28,7 +28,7 @@ public class ObiectToJson {
         if (resultYn.equals("Y") || resultYn.equals("y")) {
             try {
 //                String valueAsString = objectMapper.writeValueAsString(object);
-                objectMapper.writerWithDefaultPrettyPrinter().writeValue(
+                objectMapper.writeValue(
                         new FileWriter(projecDirectory
                                 + simpleName + " "
                                // + DataTime.getCurrentDate() + " "   MOŻEMY DODAĆ

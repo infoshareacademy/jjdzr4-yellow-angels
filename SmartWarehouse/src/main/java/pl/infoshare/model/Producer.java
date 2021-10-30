@@ -1,6 +1,8 @@
 package pl.infoshare.model;
 
-public class Producer {
+import java.io.Serializable;
+
+public class Producer implements Serializable {
     private int id;
     public String name;
     private Address address;

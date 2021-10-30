@@ -1,6 +1,8 @@
 package pl.infoshare.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,6 +11,7 @@ public class ObiectToJson {
 
     public void createJSONObject(Object object, String pathway) {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         String simpleClassName = object.getClass().getSimpleName();
         String fileName = DataTime.getCurrentTime();
         if(ifSaveFile(fileName,simpleClassName)) {
