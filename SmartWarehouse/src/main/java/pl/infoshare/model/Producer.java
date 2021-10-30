@@ -30,7 +30,6 @@ public class Producer {
     @Override
     public String toString() {
         return id +
-                ". " + name + '\'' +
-                ", address=" + address;
+                ". " + name + '\'' ;
     }
 }
