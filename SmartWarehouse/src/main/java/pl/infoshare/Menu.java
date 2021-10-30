@@ -3,6 +3,7 @@ package pl.infoshare;
 import pl.infoshare.service.AddItemService;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.service.ItemService;
+import pl.infoshare.service.SearchEngine;
 
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Menu {
         menuOptions.add("2. Dodaj produkt");
         menuOptions.add("3. Usuń produkt");
         menuOptions.add("4. Edytuj produkt");
+        menuOptions.add("5. Wyszukiwarka");
 
         return menuOptions;
     }
@@ -90,7 +92,12 @@ public class Menu {
 //                Edycja produktu
                 ItemService.editItem();
                 break;
-
+            case 5:
+//                Wyszukiwanie;
+                System.out.println("Rozpoczynam wyszukiwanie...");
+                SearchEngine search = new SearchEngine();
+                search.runSearching();
+                break;
         }
         returnToMenu();
     }
