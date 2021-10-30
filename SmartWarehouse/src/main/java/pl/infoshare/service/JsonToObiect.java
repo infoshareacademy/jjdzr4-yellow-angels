@@ -9,7 +9,6 @@ public class JsonToObiect {
         I result = null;
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(pathway + fileName + ".json");
-
         try {
             result = objectMapper.readValue(file, cls);
         } catch (Exception e) {

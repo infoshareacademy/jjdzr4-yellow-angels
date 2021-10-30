@@ -1,17 +1,7 @@
 package pl.infoshare.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import java.time.LocalDateTime;
 
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Item.class, name = "Item"),
-        })
 public abstract class ItemComponent {
     private int id;
     private int itemCode; //producer serial number
@@ -21,9 +11,6 @@ public abstract class ItemComponent {
     private double weight;
     private LocalDateTime expirationDate;
     private Warehouse localization;
-
-    public ItemComponent() {
-    }
 
     public ItemComponent(int id, String name, Category category, Producer producer) {
         this.id = id;
