@@ -9,6 +9,9 @@ public class Producer {
         this.name = name;
     }
 
+    public Producer() {
+    }
+
     public Producer(int id, String name, Address address) {
         this.id = id;
         this.name = name;

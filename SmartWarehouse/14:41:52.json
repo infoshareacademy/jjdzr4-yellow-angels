@@ -1,0 +1,14 @@
+{
+  "@type" : "Item",
+  "id" : 1,
+  "name" : "Ala",
+  "category" : {
+    "id" : 1,
+    "name" : "Cola"
+  },
+  "producer" : {
+    "id" : 0,
+    "name" : "Pro",
+    "address" : null
+  }
+}
