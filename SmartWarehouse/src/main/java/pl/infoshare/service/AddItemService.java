@@ -19,15 +19,8 @@ public class AddItemService {
 
         System.out.println("Podaj nazwe produktu.");
         String nameInput = getInputUserString();
-        Category categoryInput;
-        do {
-            categoryInput = setCategory();
-        } while (categoryInput == null);
-
-        Producer producerInput;
-        do {
-            producerInput = setProducer();
-        } while (producerInput == null);
+        Category categoryInput = setCategory();
+        Producer producerInput = setProducer();
         int id = generateId();
 
 
@@ -48,7 +41,7 @@ public class AddItemService {
         } else {
             System.out.println("Brak wskazanej kategorii.");
         }
-        return null;
+        return setCategory();
     }
 
     private Producer setProducer() {
@@ -60,15 +53,15 @@ public class AddItemService {
         } else {
             System.out.println("Brak wskazanego producenta.");
         }
-        return null;
+        return setProducer();
     }
 
-    private int generateId() {
+    public int generateId() {
         Random random = new Random();
         int id = random.nextInt();
         for (ItemComponent item : factory.getItems()) {
-            if (item.getId() == id || id < 0) {
-                generateId();
+            if (item.getId() == id || id < 0){
+                return generateId();
             }
         }
         return id;
