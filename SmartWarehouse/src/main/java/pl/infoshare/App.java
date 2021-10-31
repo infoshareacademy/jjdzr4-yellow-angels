@@ -1,6 +1,5 @@
 package pl.infoshare;
 
-
 /**
  * Hello world!
  *
