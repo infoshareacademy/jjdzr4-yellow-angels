@@ -23,13 +23,11 @@ public class AddItemService {
         Producer producerInput = setProducer();
         int id = generateId();
 
-
         Item item = new Item(id, nameInput, categoryInput, producerInput);
         factory.getItems().add(item);
 
-        System.out.println("Dodales produkt o nazwie " + nameInput + " z kategorii " + categoryInput + ",ktorego dostawca jest " + producerInput + ".");
-        System.out.println("Dziekujemy, Twoj produkt zostal dodany.");
-
+        System.out.println("Dodałeś produkt: " + nameInput + " z kategorii: " + categoryInput + ", którego dostawcą jest: " + producerInput + ".");
+        System.out.println("Dziękujemy, Twój produkt został dodany.");
     }
 
     private Category setCategory() {
@@ -60,13 +58,12 @@ public class AddItemService {
         Random random = new Random();
         int id = random.nextInt();
         for (ItemComponent item : factory.getItems()) {
-            if (item.getId() == id || id < 0){
+            if (item.getId() == id || id < 0) {
                 return generateId();
             }
         }
         return id;
     }
-
 }
 
 
