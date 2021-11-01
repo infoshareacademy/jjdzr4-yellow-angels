@@ -79,7 +79,7 @@ public class EditItemService {
         boolean nothingChanged = true;
         for (Category category : categories) {
             if (category.getId() == input) {
-                item.setCategory(categories.get(input));
+                item.setCategory(category);
                 System.out.println("Zaktualizowano kategorię produktu.");
                 nothingChanged = false;
             }
@@ -99,7 +99,7 @@ public class EditItemService {
         boolean nothingChanged = true;
         for (Producer producer : producers) {
             if (producer.getId() == input) {
-                item.setProducer(producers.get(input));
+                item.setProducer(producer);
                 System.out.println("Zaktualizowano producenta produktu.");
                 nothingChanged = false;
             }
