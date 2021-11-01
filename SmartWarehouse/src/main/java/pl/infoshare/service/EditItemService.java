@@ -74,7 +74,7 @@ public class EditItemService {
         categories.forEach(System.out::println);
         System.out.println("Aktualna kategoria: " + item.getCategory().getName());
         System.out.println("Wskaż nową kategorię: ");
-        int input = ConsoleInput.getInputUserInteger() - 1;
+        int input = ConsoleInput.getInputUserInteger();
 
         boolean nothingChanged = true;
         for (Category category : categories) {
@@ -94,7 +94,7 @@ public class EditItemService {
         producers.forEach(System.out::println);
         System.out.println("Aktualny producent: " + item.getProducer().getName());
         System.out.println("Wskaż nowego producenta: ");
-        int input = ConsoleInput.getInputUserInteger() - 1;
+        int input = ConsoleInput.getInputUserInteger();
 
         boolean nothingChanged = true;
         for (Producer producer : producers) {

@@ -6,6 +6,7 @@ import pl.infoshare.model.Item;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
 
+import java.util.Optional;
 import java.util.Random;
 
 import static pl.infoshare.utils.ConsoleInput.getInputUserInteger;
@@ -33,24 +34,33 @@ public class AddItemService {
     private Category setCategory() {
         System.out.println("Podaj kategorię produktu.");
         factory.getCategories().forEach(System.out::println);
-        int categoryId = getInputUserInteger() - 1;
-        if (factory.getCategories().size()> categoryId) {
-            return factory.getCategories().get(categoryId);
-        } else {
-            System.out.println("Brak wskazanej kategorii.");
+        int categoryId = getInputUserInteger();
+
+        for (Category category : factory.getCategories()) {
+            if (category.getId() == categoryId) {
+                return category;
+            }
         }
+
+        System.out.println("Brak wskazanej kategorii.");
+
+
         return setCategory();
     }
 
     private Producer setProducer() {
         System.out.println("Podaj producenta produktu.");
         factory.getProducers().forEach(System.out::println);
-        int producerId = getInputUserInteger() - 1;
-        if (factory.getProducers().size() > producerId) {
-            return factory.getProducers().get(producerId);
-        } else {
-            System.out.println("Brak wskazanego producenta.");
+        int producerId = getInputUserInteger();
+
+        for (Producer producer : factory.getProducers()) {
+            if (producer.getId() == producerId) {
+                return producer;
+            }
         }
+
+        System.out.println("Brak wskazanego producenta.");
+
         return setProducer();
     }
 
