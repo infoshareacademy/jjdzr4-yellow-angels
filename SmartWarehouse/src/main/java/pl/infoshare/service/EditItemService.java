@@ -8,7 +8,7 @@ import pl.infoshare.utils.ConsoleInput;
 
 import java.util.List;
 
-public class ItemService {
+public class EditItemService {
 
     private static final DataFactory dataFactory = DataFactory.getINSTANCE;
 

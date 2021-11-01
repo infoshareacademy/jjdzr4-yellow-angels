@@ -2,7 +2,7 @@ package pl.infoshare;
 
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.service.AddItemService;
-import pl.infoshare.service.ItemService;
+import pl.infoshare.service.EditItemService;
 import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
 
@@ -84,7 +84,7 @@ public class Menu {
                 break;
             case 4:
 //                Edycja produktu
-                ItemService.editItem();
+                EditItemService.editItem();
                 break;
             case 5:
 //                Wyszukiwanie;
