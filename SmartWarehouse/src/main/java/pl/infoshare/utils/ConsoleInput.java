@@ -24,7 +24,7 @@ public class ConsoleInput {
     public static Double getInputUserDouble() {
 
         boolean inputIsNotValid;
-        Double input = 0.0;
+        double input = 0.0;
         do {
             try {
                 input = new Scanner(System.in).nextDouble();
