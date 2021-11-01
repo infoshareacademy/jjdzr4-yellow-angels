@@ -21,8 +21,7 @@ public class Menu {
         enterIntoMenuOptions(number);
     }
 
-
-    private final List<String> fillMenuOptions() {
+    private List<String> fillMenuOptions() {
 
         menuOptions.add("0. Wyjście z programu");
         menuOptions.add("1. Sprawdz stan magazynu ");
