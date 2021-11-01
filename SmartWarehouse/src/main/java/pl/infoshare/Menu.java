@@ -72,7 +72,7 @@ public class Menu {
             case 1:
 //                KlasaJakasTam;
                 System.out.println("Sprawdzam stan magazynu...");
-                System.out.println(DataFactory.getINSTANCE.getItems().toString());
+                DataFactory.getINSTANCE.getItems().forEach(System.out::println);
                 break;
             case 2:
                 System.out.println("Przechodzę do dodawania produktu...");

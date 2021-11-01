@@ -18,5 +18,4 @@ public class Pack extends ItemComponent{
     public void addComponent(ItemComponent item){
         items.add(item);
     }
-
 }
