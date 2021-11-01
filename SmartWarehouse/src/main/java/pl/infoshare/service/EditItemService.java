@@ -47,7 +47,7 @@ public class EditItemService {
 
         List<ItemComponent> items = dataFactory.getItems();
         for (ItemComponent item : items) {
-            if (id == item.getId()) {
+            if (item.getId() == id) {
                 return item;
             }
         }
@@ -78,7 +78,7 @@ public class EditItemService {
 
         boolean nothingChanged = true;
         for (Category category : categories) {
-            if (input == category.getId()) {
+            if (category.getId() == input) {
                 item.setCategory(categories.get(input));
                 System.out.println("Zaktualizowano kategorię produktu.");
                 nothingChanged = false;
@@ -98,7 +98,7 @@ public class EditItemService {
 
         boolean nothingChanged = true;
         for (Producer producer : producers) {
-            if (input == producer.getId()) {
+            if (producer.getId() == input) {
                 item.setProducer(producers.get(input));
                 System.out.println("Zaktualizowano producenta produktu.");
                 nothingChanged = false;
@@ -108,5 +108,4 @@ public class EditItemService {
             System.out.println("Brak producenta o wskazanym id.");
         }
     }
-
 }
