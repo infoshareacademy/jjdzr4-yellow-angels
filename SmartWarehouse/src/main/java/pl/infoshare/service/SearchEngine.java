@@ -15,7 +15,6 @@ public class SearchEngine {
 
     private static final DataFactory factory = DataFactory.getINSTANCE;
 
-
     public void runSearching() {
         System.out.println("Ile wyników wyświetlić?" + '\n' + "Wprowadź [0] jeśli wszystkie: ");
         int userInputRecords = ConsoleInput.getInputUserInteger();
@@ -52,7 +51,6 @@ public class SearchEngine {
 
             if (matcher.matches() && result.size() < numberOfProducts) {
                 result.add(item);
-
             }
         }
         return result;
