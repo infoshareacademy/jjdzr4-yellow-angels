@@ -88,7 +88,6 @@ public class Menu {
                 break;
             case 5:
 //                Wyszukiwanie;
-                System.out.println("Rozpoczynam wyszukiwanie...");
                 SearchEngine search = new SearchEngine();
                 search.runSearching();
                 break;
