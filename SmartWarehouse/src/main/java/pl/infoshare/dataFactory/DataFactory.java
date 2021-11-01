@@ -3,6 +3,7 @@ package pl.infoshare.dataFactory;
 import pl.infoshare.model.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class DataFactory {
@@ -29,14 +30,17 @@ public class DataFactory {
                 new Item(3, "Item 3", c2, p3),
                 new Item(4, "Item 4", c3, p1),
                 new Pack(5, "Item 5", c3, p1)));
+        items.sort(Comparator.comparingInt(ItemComponent::getId));
 
         categories = new ArrayList<>(List.of(
                 c3, c1, c2
         ));
+        categories.sort(Comparator.comparingInt(Category::getId));
 
         producers = new ArrayList<>(List.of(
                 p3, p1, p2
         ));
+        producers.sort(Comparator.comparingInt(Producer::getId));
     }
 
     public ArrayList<ItemComponent> getItems() {

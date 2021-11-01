@@ -1,12 +1,14 @@
 package pl.infoshare;
 
 import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.AddItemService;
 import pl.infoshare.service.EditItemService;
 import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Menu {
