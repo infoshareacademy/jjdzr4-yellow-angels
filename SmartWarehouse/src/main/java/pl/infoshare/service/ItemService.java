@@ -71,7 +71,7 @@ public class ItemService {
 
     private static void editCategory(ItemComponent item) {
         List<Category> categories = dataFactory.getCategories();
-        System.out.println(categories.toString());
+        categories.forEach(System.out::println);
         System.out.println("Aktualna kategoria: " + item.getCategory().getName());
         System.out.println("Wskaż nową kategorię: ");
         int input = ConsoleInput.getInputUserInteger();
@@ -91,7 +91,7 @@ public class ItemService {
 
     private static void editProducer(ItemComponent item) {
         List<Producer> producers = dataFactory.getProducers();
-        System.out.println(producers.toString());
+        producers.forEach(System.out::println);
         System.out.println("Aktualny producent: " + item.getProducer().getName());
         System.out.println("Wskaż nowego producenta: ");
         int input = ConsoleInput.getInputUserInteger();

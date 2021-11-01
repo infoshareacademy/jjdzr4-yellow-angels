@@ -34,7 +34,7 @@ public class AddItemService {
 
     private Category setCategory() {
         System.out.println("Podaj kategorię produktu.");
-        System.out.println(factory.getCategories());
+        factory.getCategories().forEach(System.out::println);
         int categoryId = getInputUserInteger();
         if (factory.getCategories().size() > categoryId) {
             return factory.getCategories().get(categoryId);
@@ -46,7 +46,7 @@ public class AddItemService {
 
     private Producer setProducer() {
         System.out.println("Podaj producenta produktu.");
-        System.out.println(factory.getProducers());
+        factory.getProducers().forEach(System.out::println);
         int producerId = getInputUserInteger();
         if (factory.getProducers().size() > producerId) {
             return factory.getProducers().get(producerId);
