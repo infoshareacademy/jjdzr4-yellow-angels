@@ -3,6 +3,7 @@ package pl.infoshare;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.AddItemService;
+import pl.infoshare.service.DeleteItemService;
 import pl.infoshare.service.EditItemService;
 import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
@@ -71,7 +72,6 @@ public class Menu {
                 System.out.println("Zamykam program");
                 return;
             case 1:
-//                KlasaJakasTam;
                 System.out.println("Sprawdzam stan magazynu...");
                 DataFactory.getINSTANCE.getItems().forEach(System.out::println);
                 break;
@@ -80,15 +80,12 @@ public class Menu {
                 itemService.addItem();
                 break;
             case 3:
-//                KlasaJakasTam3;
-                System.out.println("Usuwam produkt...");
+                DeleteItemService.deleteItem();
                 break;
             case 4:
-//                Edycja produktu
                 EditItemService.editItem();
                 break;
             case 5:
-//                Wyszukiwanie;
                 SearchEngine search = new SearchEngine();
                 search.runSearching();
                 break;
