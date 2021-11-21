@@ -9,3 +9,5 @@
 * wpisz `docker run -p [port użykownika]:[port kontenera] [początek IMAGE ID]`, np. `docker run -p 8000:8080 3d81`  
 *! port użytkownika - port zadeklarowany w Dockerfile*  
 *! port kontenera - port domyślny w aplikacji / zadeklarowany w application.properties*
+## Sprawdzenie działania aplikacji
+* wpisz w przeglądarce adres localhost wskazując port użytkownika np. `http://localhost:8000/`
