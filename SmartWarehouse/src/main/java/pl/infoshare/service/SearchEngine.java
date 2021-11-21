@@ -17,13 +17,20 @@ public class SearchEngine {
 
 
     public void runSearching() {
-        System.out.println("Podaj ile ma byc zwróconych rekordów [0] - jeśli wszystkie: ");
+        System.out.println("Ile wyników wyświetlić?" + '\n' + "Wprowadź [0] jeśli wszystkie: ");
         int userInputRecords = ConsoleInput.getInputUserInteger();
+        List <ItemComponent> result;
         if (userInputRecords == 0){
-            System.out.println(searchAnyExpressionContains());
+            result = searchAnyExpressionContains();
         }
         else {
-            System.out.println(searchAnyExpressionContains(userInputRecords));
+            result = searchAnyExpressionContains(userInputRecords);
+        }
+
+        if (result.size() == 0){
+            System.out.println("Brak wyników.");
+        } else {
+            result.forEach(System.out::println);
         }
     }
 
