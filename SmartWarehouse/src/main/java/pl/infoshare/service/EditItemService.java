@@ -8,7 +8,7 @@ import pl.infoshare.utils.ConsoleInput;
 
 import java.util.List;
 
-public class ItemService {
+public class EditItemService {
 
     private static final DataFactory dataFactory = DataFactory.getINSTANCE;
 
@@ -47,7 +47,7 @@ public class ItemService {
 
         List<ItemComponent> items = dataFactory.getItems();
         for (ItemComponent item : items) {
-            if (id == item.getId()) {
+            if (item.getId() == id) {
                 return item;
             }
         }
@@ -78,8 +78,8 @@ public class ItemService {
 
         boolean nothingChanged = true;
         for (Category category : categories) {
-            if (input == category.getId()) {
-                item.setCategory(categories.get(input));
+            if (category.getId() == input) {
+                item.setCategory(category);
                 System.out.println("Zaktualizowano kategorię produktu.");
                 nothingChanged = false;
             }
@@ -98,8 +98,8 @@ public class ItemService {
 
         boolean nothingChanged = true;
         for (Producer producer : producers) {
-            if (input == producer.getId()) {
-                item.setProducer(producers.get(input));
+            if (producer.getId() == input) {
+                item.setProducer(producer);
                 System.out.println("Zaktualizowano producenta produktu.");
                 nothingChanged = false;
             }
@@ -108,5 +108,4 @@ public class ItemService {
             System.out.println("Brak producenta o wskazanym id.");
         }
     }
-
 }

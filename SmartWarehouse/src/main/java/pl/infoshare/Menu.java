@@ -1,12 +1,14 @@
 package pl.infoshare;
 
 import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.AddItemService;
-import pl.infoshare.service.ItemService;
+import pl.infoshare.service.EditItemService;
 import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Menu {
@@ -21,8 +23,7 @@ public class Menu {
         enterIntoMenuOptions(number);
     }
 
-
-    private final List<String> fillMenuOptions() {
+    private List<String> fillMenuOptions() {
 
         menuOptions.add("0. Wyjście z programu");
         menuOptions.add("1. Sprawdz stan magazynu ");
@@ -84,7 +85,7 @@ public class Menu {
                 break;
             case 4:
 //                Edycja produktu
-                ItemService.editItem();
+                EditItemService.editItem();
                 break;
             case 5:
 //                Wyszukiwanie;

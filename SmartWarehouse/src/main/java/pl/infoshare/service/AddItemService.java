@@ -6,6 +6,7 @@ import pl.infoshare.model.Item;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
 
+import java.util.Optional;
 import java.util.Random;
 
 import static pl.infoshare.utils.ConsoleInput.getInputUserInteger;
@@ -23,24 +24,27 @@ public class AddItemService {
         Producer producerInput = setProducer();
         int id = generateId();
 
-
         Item item = new Item(id, nameInput, categoryInput, producerInput);
         factory.getItems().add(item);
 
-        System.out.println("Dodales produkt o nazwie " + nameInput + " z kategorii " + categoryInput + ",ktorego dostawca jest " + producerInput + ".");
-        System.out.println("Dziekujemy, Twoj produkt zostal dodany.");
-
+        System.out.println("Dodałeś produkt: " + nameInput + " z kategorii: " + categoryInput + ", którego dostawcą jest: " + producerInput + ".");
+        System.out.println("Dziękujemy, Twój produkt został dodany.");
     }
 
     private Category setCategory() {
         System.out.println("Podaj kategorię produktu.");
         factory.getCategories().forEach(System.out::println);
         int categoryId = getInputUserInteger();
-        if (factory.getCategories().size() > categoryId) {
-            return factory.getCategories().get(categoryId);
-        } else {
-            System.out.println("Brak wskazanej kategorii.");
+
+        for (Category category : factory.getCategories()) {
+            if (category.getId() == categoryId) {
+                return category;
+            }
         }
+
+        System.out.println("Brak wskazanej kategorii.");
+
+
         return setCategory();
     }
 
@@ -48,11 +52,15 @@ public class AddItemService {
         System.out.println("Podaj producenta produktu.");
         factory.getProducers().forEach(System.out::println);
         int producerId = getInputUserInteger();
-        if (factory.getProducers().size() > producerId) {
-            return factory.getProducers().get(producerId);
-        } else {
-            System.out.println("Brak wskazanego producenta.");
+
+        for (Producer producer : factory.getProducers()) {
+            if (producer.getId() == producerId) {
+                return producer;
+            }
         }
+
+        System.out.println("Brak wskazanego producenta.");
+
         return setProducer();
     }
 
@@ -60,13 +68,12 @@ public class AddItemService {
         Random random = new Random();
         int id = random.nextInt();
         for (ItemComponent item : factory.getItems()) {
-            if (item.getId() == id || id < 0){
+            if (item.getId() == id || id < 0) {
                 return generateId();
             }
         }
         return id;
     }
-
 }
 
 
