@@ -1,12 +1,12 @@
 package pl.infoshare.service;
 
+import pl.infoshare.Menu;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.Item;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
 
-import java.util.Optional;
 import java.util.Random;
 
 import static pl.infoshare.utils.ConsoleInput.getInputUserInteger;
@@ -18,8 +18,7 @@ public class AddItemService {
 
     public void addItem() {
 
-        System.out.println("Podaj nazwe produktu.");
-        String nameInput = getInputUserString();
+        String nameInput = setName();
         Category categoryInput = setCategory();
         Producer producerInput = setProducer();
         int id = generateId();
@@ -31,10 +30,21 @@ public class AddItemService {
         System.out.println("Dziękujemy, Twój produkt został dodany.");
     }
 
+    private String setName(){
+        System.out.println("Podaj nazwe produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
+        String nameInput = getInputUserString();
+        exitToMenu(nameInput);
+        return nameInput;
+    }
+
     private Category setCategory() {
         System.out.println("Podaj kategorię produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
         factory.getCategories().forEach(System.out::println);
         int categoryId = getInputUserInteger();
+
+        exitToMenu(categoryId);
 
         for (Category category : factory.getCategories()) {
             if (category.getId() == categoryId) {
@@ -44,14 +54,16 @@ public class AddItemService {
 
         System.out.println("Brak wskazanej kategorii.");
 
-
         return setCategory();
     }
 
     private Producer setProducer() {
         System.out.println("Podaj producenta produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
         factory.getProducers().forEach(System.out::println);
         int producerId = getInputUserInteger();
+
+        exitToMenu(producerId);
 
         for (Producer producer : factory.getProducers()) {
             if (producer.getId() == producerId) {
@@ -73,6 +85,18 @@ public class AddItemService {
             }
         }
         return id;
+    }
+
+    private void exitToMenu(int input){
+        if (0 == input) {
+            Menu.getINSTANCE().returnToMenu();
+        }
+    }
+
+    private void exitToMenu(String input){
+        if ("0".equals(input)) {
+            Menu.getINSTANCE().returnToMenu();
+        }
     }
 }
 
