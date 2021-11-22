@@ -13,6 +13,11 @@ public class DeleteItemService {
     public static void deleteItem() {
 
         int id = getItemId();
+
+        if (0 == id){
+            return;
+        }
+
         List<ItemComponent> items = factory.getItems();
         ItemComponent itemToRemove = null;
         for (ItemComponent item : items) {
@@ -32,6 +37,7 @@ public class DeleteItemService {
 
     private static int getItemId(){
         System.out.println("Podaj id produktu, który chcesz usunąć: ");
+        System.out.println("Wpisz '0' aby anulować.");
         factory.getItems().forEach(System.out::println);
         return ConsoleInput.getInputUserInteger();
     }
