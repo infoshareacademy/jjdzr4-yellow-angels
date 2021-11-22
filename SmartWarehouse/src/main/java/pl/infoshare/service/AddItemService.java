@@ -1,6 +1,5 @@
 package pl.infoshare.service;
 
-import pl.infoshare.Menu;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Category;
 import pl.infoshare.model.Item;
@@ -19,8 +18,20 @@ public class AddItemService {
     public void addItem() {
 
         String nameInput = setName();
+        if ("0".equals(nameInput)) {
+            return;
+        }
+
         Category categoryInput = setCategory();
+        if (categoryInput == null) {
+            return;
+        }
+
         Producer producerInput = setProducer();
+        if (producerInput == null) {
+            return;
+        }
+
         int id = generateId();
 
         Item item = new Item(id, nameInput, categoryInput, producerInput);
@@ -30,12 +41,10 @@ public class AddItemService {
         System.out.println("Dziękujemy, Twój produkt został dodany.");
     }
 
-    private String setName(){
+    private String setName() {
         System.out.println("Podaj nazwe produktu.");
         System.out.println("Wpisz '0' aby anulować.");
-        String nameInput = getInputUserString();
-        exitToMenu(nameInput);
-        return nameInput;
+        return getInputUserString();
     }
 
     private Category setCategory() {
@@ -44,7 +53,9 @@ public class AddItemService {
         factory.getCategories().forEach(System.out::println);
         int categoryId = getInputUserInteger();
 
-        exitToMenu(categoryId);
+        if (0 == categoryId) {
+            return null;
+        }
 
         for (Category category : factory.getCategories()) {
             if (category.getId() == categoryId) {
@@ -63,7 +74,9 @@ public class AddItemService {
         factory.getProducers().forEach(System.out::println);
         int producerId = getInputUserInteger();
 
-        exitToMenu(producerId);
+        if (0 == producerId) {
+            return null;
+        }
 
         for (Producer producer : factory.getProducers()) {
             if (producer.getId() == producerId) {
@@ -85,18 +98,6 @@ public class AddItemService {
             }
         }
         return id;
-    }
-
-    private void exitToMenu(int input){
-        if (0 == input) {
-            Menu.getINSTANCE().returnToMenu();
-        }
-    }
-
-    private void exitToMenu(String input){
-        if ("0".equals(input)) {
-            Menu.getINSTANCE().returnToMenu();
-        }
     }
 }
 
