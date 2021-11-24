@@ -14,9 +14,9 @@ public class ItemComponentController {
         this.service = service;
     }
 
-    @GetMapping("/stan-magazynu")
+    @GetMapping("/lista-produktow")
     public String getAll(Model model) {
         model.addAttribute("items", service.getAllItems());
-        return "stock-status";
+        return "products";
     }
 }
