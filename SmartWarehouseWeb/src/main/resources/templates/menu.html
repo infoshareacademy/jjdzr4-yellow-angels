@@ -11,7 +11,7 @@
 <nav>
     <ul th:each="object : ${menuObjects}">
         <li>
-            <a th:href="${object.landingPage}" th:text="${object.name}"></a>
+            <a th:href="${object.landingPage}" th:text="${object}"></a>
         </li>
     </ul>
 </nav>

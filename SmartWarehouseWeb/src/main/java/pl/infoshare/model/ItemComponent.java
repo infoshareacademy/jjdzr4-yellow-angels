@@ -63,8 +63,7 @@ public abstract class ItemComponent {
 
     @Override
     public String toString() {
-        return  id + ". " +
-                name +
+        return  name +
                 ", Kategoria: " + category +
                 ", Producent: " + producer;
 
