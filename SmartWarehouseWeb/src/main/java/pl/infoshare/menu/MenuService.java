@@ -9,7 +9,7 @@ public class MenuService {
 
     public List<MenuObject> getMenu(){
         return List.of(
-                new MenuObject(1, "Sprawdź stan magazynu", "stan-magazynu"),
+                new MenuObject(1, "Stan magazynu", "stan-magazynu"),
                 new MenuObject(2, "Lista produktów", "lista-produktow"),
                 new MenuObject(3, "Dodaj produkt", "dodaj-produkt"),
                 new MenuObject(4, "Usuń produkt", "usun-produkt"),
