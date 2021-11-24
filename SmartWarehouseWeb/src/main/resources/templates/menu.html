@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<thead>
+<meta charset="UTF-8">
+<title>Menu</title>
+</thead>
+<tbody>
+
+<tr th:each="object : ${menuObjects}">
+    <p>
+        <a th:href="${object.landingPage}" th:text="${object.name}"></a>
+    </p>
+</tr>
+
+</tbody>
+</html>
