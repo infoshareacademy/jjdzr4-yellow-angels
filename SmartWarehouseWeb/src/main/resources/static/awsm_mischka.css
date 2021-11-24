@@ -248,6 +248,7 @@ article > footer{
 
 a{
     color:#c34138;
+    text-decoration: none;
 }
 a:visited{
     color:#603237;

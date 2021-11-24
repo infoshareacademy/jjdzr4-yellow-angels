@@ -8,11 +8,13 @@
 </thead>
 <tbody>
 
-<tr th:each="object : ${menuObjects}">
-    <p>
-        <a th:href="${object.landingPage}" th:text="${object.name}"></a>
-    </p>
-</tr>
+<nav>
+    <ul th:each="object : ${menuObjects}">
+        <li>
+            <a th:href="${object.landingPage}" th:text="${object.name}"></a>
+        </li>
+    </ul>
+</nav>
 
 </tbody>
 </html>
