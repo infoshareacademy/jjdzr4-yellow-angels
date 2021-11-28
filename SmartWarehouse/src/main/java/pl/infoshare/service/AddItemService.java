@@ -6,7 +6,6 @@ import pl.infoshare.model.Item;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
 
-import java.util.Optional;
 import java.util.Random;
 
 import static pl.infoshare.utils.ConsoleInput.getInputUserInteger;
@@ -18,10 +17,21 @@ public class AddItemService {
 
     public void addItem() {
 
-        System.out.println("Podaj nazwe produktu.");
-        String nameInput = getInputUserString();
+        String nameInput = setName();
+        if ("0".equals(nameInput)) {
+            return;
+        }
+
         Category categoryInput = setCategory();
+        if (categoryInput == null) {
+            return;
+        }
+
         Producer producerInput = setProducer();
+        if (producerInput == null) {
+            return;
+        }
+
         int id = generateId();
 
         Item item = new Item(id, nameInput, categoryInput, producerInput);
@@ -31,10 +41,21 @@ public class AddItemService {
         System.out.println("Dziękujemy, Twój produkt został dodany.");
     }
 
+    private String setName() {
+        System.out.println("Podaj nazwe produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
+        return getInputUserString();
+    }
+
     private Category setCategory() {
         System.out.println("Podaj kategorię produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
         factory.getCategories().forEach(System.out::println);
         int categoryId = getInputUserInteger();
+
+        if (0 == categoryId) {
+            return null;
+        }
 
         for (Category category : factory.getCategories()) {
             if (category.getId() == categoryId) {
@@ -44,14 +65,18 @@ public class AddItemService {
 
         System.out.println("Brak wskazanej kategorii.");
 
-
         return setCategory();
     }
 
     private Producer setProducer() {
         System.out.println("Podaj producenta produktu.");
+        System.out.println("Wpisz '0' aby anulować.");
         factory.getProducers().forEach(System.out::println);
         int producerId = getInputUserInteger();
+
+        if (0 == producerId) {
+            return null;
+        }
 
         for (Producer producer : factory.getProducers()) {
             if (producer.getId() == producerId) {

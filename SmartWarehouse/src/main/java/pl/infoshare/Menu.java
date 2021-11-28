@@ -1,7 +1,6 @@
 package pl.infoshare;
 
 import pl.infoshare.dataFactory.DataFactory;
-import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.AddItemService;
 import pl.infoshare.service.DeleteItemService;
 import pl.infoshare.service.EditItemService;
@@ -9,13 +8,25 @@ import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Menu {
 
-    private List<String> menuOptions = new ArrayList<>();
-    private final AddItemService itemService = new AddItemService();
+    private List<String> menuOptions;
+    private final AddItemService itemService;
+    public static Menu INSTANCE;
+
+    private Menu() {
+        menuOptions = new ArrayList<>();
+        itemService = new AddItemService();
+    }
+
+    public static Menu getINSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new Menu();
+        }
+        return INSTANCE;
+    }
 
     public void run() {
         menuOptions = fillMenuOptions();
@@ -93,7 +104,7 @@ public class Menu {
         returnToMenu();
     }
 
-    private void returnToMenu() {
+    public void returnToMenu() {
         displayMenu();
         enterIntoMenuOptions(getMenuNumber());
     }

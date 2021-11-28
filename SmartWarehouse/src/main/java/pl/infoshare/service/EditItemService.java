@@ -42,10 +42,11 @@ public class EditItemService {
 
     private static ItemComponent getItemById() {
 
+        List<ItemComponent> items = dataFactory.getItems();
+        items.forEach(System.out::println);
         System.out.println("Podaj id produktu: ");
         int id = ConsoleInput.getInputUserInteger();
 
-        List<ItemComponent> items = dataFactory.getItems();
         for (ItemComponent item : items) {
             if (item.getId() == id) {
                 return item;
@@ -65,7 +66,13 @@ public class EditItemService {
     private static void editName(ItemComponent item) {
         System.out.println("Aktualna nazwa: " + item.getName());
         System.out.println("Podaj nową nazwę: ");
+        System.out.println("Wpisz '0' aby anulować.");
         String input = ConsoleInput.getInputUserString();
+
+        if ("0".equals(input)) {
+            return;
+        }
+
         item.setName(input);
     }
 
@@ -74,7 +81,12 @@ public class EditItemService {
         categories.forEach(System.out::println);
         System.out.println("Aktualna kategoria: " + item.getCategory().getName());
         System.out.println("Wskaż nową kategorię: ");
+        System.out.println("Wpisz '0' aby anulować.");
         int input = ConsoleInput.getInputUserInteger();
+
+        if (0 == input) {
+            return;
+        }
 
         boolean nothingChanged = true;
         for (Category category : categories) {
@@ -94,7 +106,12 @@ public class EditItemService {
         producers.forEach(System.out::println);
         System.out.println("Aktualny producent: " + item.getProducer().getName());
         System.out.println("Wskaż nowego producenta: ");
+        System.out.println("Wpisz '0' aby anulować.");
         int input = ConsoleInput.getInputUserInteger();
+
+        if (0 == input) {
+            return;
+        }
 
         boolean nothingChanged = true;
         for (Producer producer : producers) {
