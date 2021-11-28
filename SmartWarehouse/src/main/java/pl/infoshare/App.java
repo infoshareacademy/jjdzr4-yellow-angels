@@ -1,4 +1,9 @@
 package pl.infoshare;
+import pl.infoshare.model.User;
+import pl.infoshare.service.AddUserService;
+
+import static pl.infoshare.service.AddUserService.addUser;
+import static pl.infoshare.service.AddUserService.greetUser;
 
 /**
  * Hello world!
@@ -6,9 +11,15 @@ package pl.infoshare;
  */
 public class App 
 {
-    public static void main( String[] args )
+
+
+    public static void main(String[] args )
     {
-        System.out.println( "Yellow Angels" );
+        System.out.println( "Tres Hombres Ltd" );
+
+        addUser();
+        greetUser();
+
 
         Menu menu = new Menu();
         menu.run();

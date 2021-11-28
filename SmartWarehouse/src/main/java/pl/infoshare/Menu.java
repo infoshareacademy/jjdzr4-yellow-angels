@@ -7,7 +7,8 @@ import pl.infoshare.service.DeleteItemService;
 import pl.infoshare.service.EditItemService;
 import pl.infoshare.service.SearchEngine;
 import pl.infoshare.utils.ConsoleInput;
-
+import pl.infoshare.model.UserType;
+import pl.infoshare.model.User;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

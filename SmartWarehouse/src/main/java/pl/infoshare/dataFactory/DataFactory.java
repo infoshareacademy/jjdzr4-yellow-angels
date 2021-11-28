@@ -12,6 +12,7 @@ public class DataFactory {
     private final ArrayList<ItemComponent> items;
     private ArrayList<Category> categories;
     private ArrayList<Producer> producers;
+    private ArrayList<User> users;
 
     private DataFactory() {
 
