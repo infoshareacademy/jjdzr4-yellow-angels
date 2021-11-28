@@ -14,19 +14,21 @@ public class User  {
     private UserType userType;
 
     public User(String name,String surname, String phoneNumber,
-                String mail, String login, String password) {
+                String mail, String login, String password, UserType userType) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
         this.login = login;
         this.password = password;
+        this.userType = userType;
     }
     public User() {
         this.name = "unknown";
         this.mail = "unknown";
         this.password = "unknown";
     }
+    public int getId() {return  id;};
 
     public String getName() {
         return name;

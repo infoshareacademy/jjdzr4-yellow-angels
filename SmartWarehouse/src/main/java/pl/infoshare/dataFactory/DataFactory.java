@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static pl.infoshare.model.UserType.COMPANY;
+import static pl.infoshare.model.UserType.PRIVATE;
+
 public class DataFactory {
     public static final DataFactory getINSTANCE = new DataFactory();
 
@@ -31,6 +34,13 @@ public class DataFactory {
                 new Item(3, "Item 3", c2, p3),
                 new Item(4, "Item 4", c3, p1),
                 new Pack(5, "Item 5", c3, p1)));
+        users = new ArrayList<>(List.of(
+                new User ("Johny","Danza","0700880188","JohnyDanza@gmail.com", "JDanza", "ApplePie",PRIVATE),
+                new User ("Lech","Walesa","48511662815","LWalesa@gmail.com","Solidarny78","Stocznia",PRIVATE),
+                new User ("Krzak Spolka Zoo","","0700363636", "krzaki@gmail.com","KrzakLtd","Krzaki1234",COMPANY)
+        ));
+
+
         items.sort(Comparator.comparingInt(ItemComponent::getId));
 
         categories = new ArrayList<>(List.of(
@@ -42,6 +52,8 @@ public class DataFactory {
                 p3, p1, p2
         ));
         producers.sort(Comparator.comparingInt(Producer::getId));
+         users.sort(Comparator.comparingInt(User::getId));
+
     }
 
     public ArrayList<ItemComponent> getItems() {
@@ -63,4 +75,6 @@ public class DataFactory {
     public void setProducers(ArrayList<Producer> producers) {
         this.producers = producers;
     }
+
+    public ArrayList<User> getUsers() {return users;}
 }
