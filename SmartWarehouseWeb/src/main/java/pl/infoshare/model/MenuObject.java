@@ -1,4 +1,4 @@
-package pl.infoshare.menu;
+package pl.infoshare.model;
 
 public class MenuObject {
     private final int id;

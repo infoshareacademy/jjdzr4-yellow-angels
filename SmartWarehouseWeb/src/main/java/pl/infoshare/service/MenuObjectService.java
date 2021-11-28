@@ -1,11 +1,12 @@
-package pl.infoshare.menu;
+package pl.infoshare.service;
 
 import org.springframework.stereotype.Service;
+import pl.infoshare.model.MenuObject;
 
 import java.util.List;
 
 @Service
-public class MenuService {
+public class MenuObjectService {
 
     public List<MenuObject> getMenu(){
         return List.of(
