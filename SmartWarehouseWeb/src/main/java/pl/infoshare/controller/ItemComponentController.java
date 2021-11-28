@@ -14,7 +14,7 @@ public class ItemComponentController {
         this.service = service;
     }
 
-    @GetMapping("/lista-produktow")
+    @GetMapping("/products")
     public String getAll(Model model) {
         model.addAttribute("items", service.getAllItems());
         return "products";
