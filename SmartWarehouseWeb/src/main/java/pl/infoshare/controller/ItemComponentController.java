@@ -14,9 +14,35 @@ public class ItemComponentController {
         this.service = service;
     }
 
+    @GetMapping("/stock")
+    public String getStock(){
+        return "stock-status";
+    }
+
     @GetMapping("/products")
     public String getAll(Model model) {
         model.addAttribute("items", service.getAllItems());
         return "products";
     }
+
+    @GetMapping("/add-product")
+    public String addItem(){
+        return "add-product";
+    }
+
+    @GetMapping("/delete-product")
+    public String deleteItem(){
+        return "delete-product";
+    }
+
+    @GetMapping("/edit-product")
+    public String editItem(){
+        return "delete-product";
+    }
+
+    @GetMapping("/search-engine")
+    public String search(){
+        return "search-engine";
+    }
+
 }
