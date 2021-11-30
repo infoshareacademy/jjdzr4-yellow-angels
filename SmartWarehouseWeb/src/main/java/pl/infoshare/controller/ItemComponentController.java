@@ -3,6 +3,8 @@ package pl.infoshare.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.infoshare.service.ItemComponentService;
 
 @Controller
@@ -15,7 +17,7 @@ public class ItemComponentController {
     }
 
     @GetMapping("/stock")
-    public String getStock(){
+    public String getStock() {
         return "stock-status";
     }
 
@@ -26,22 +28,33 @@ public class ItemComponentController {
     }
 
     @GetMapping("/add-product")
-    public String addItem(){
+    public String addItem() {
         return "add-product";
     }
 
     @GetMapping("/delete-product")
-    public String deleteItem(){
+    public String deleteItem() {
         return "delete-product";
     }
 
     @GetMapping("/edit-product")
-    public String editItem(){
+    public String editItem() {
         return "delete-product";
     }
 
+    @GetMapping("/product/{id}")
+    public String itemForm(@PathVariable int id, Model model) {
+        model.addAttribute("item", service.getItemById(id));
+        return "item";
+    }
+
+    @PostMapping("/edit-product")
+    public String submit(){
+        return "result";
+    }
+
     @GetMapping("/search-engine")
-    public String search(){
+    public String search() {
         return "search-engine";
     }
 

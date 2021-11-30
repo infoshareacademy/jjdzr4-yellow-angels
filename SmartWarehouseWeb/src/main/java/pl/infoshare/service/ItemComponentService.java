@@ -13,4 +13,11 @@ public class ItemComponentService {
         return DataFactory.getINSTANCE.getItems();
     }
 
+    public ItemComponent getItemById(int id){
+        return DataFactory.getINSTANCE.getItems()
+                .stream()
+                .filter(itemComponent -> itemComponent.getId() == id)
+                .findFirst().orElse(null);
+    }
+
 }
