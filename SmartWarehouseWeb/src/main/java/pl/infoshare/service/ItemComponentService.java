@@ -2,7 +2,9 @@ package pl.infoshare.service;
 
 import org.springframework.stereotype.Service;
 import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.Category;
 import pl.infoshare.model.ItemComponent;
+import pl.infoshare.model.Producer;
 
 import java.util.List;
 
@@ -20,4 +22,16 @@ public class ItemComponentService {
                 .findFirst().orElse(null);
     }
 
+    public ItemComponent editItemComponent(ItemComponent itemComponent) {
+
+        return null;
+    }
+
+    public List<Producer> getAllProducers() {
+        return DataFactory.getINSTANCE.getProducers();
+    }
+
+    public List<Category> getAllCategories() {
+        return DataFactory.getINSTANCE.getCategories();
+    }
 }

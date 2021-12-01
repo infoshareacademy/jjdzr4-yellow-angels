@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.ItemComponentService;
 
 @Controller
@@ -37,22 +39,14 @@ public class ItemComponentController {
         return "delete-product";
     }
 
-    @GetMapping("/edit-product")
-    public String editItem() {
-        return "delete-product";
+    @PostMapping("/edit-product/{id}")
+    public String editItem(@PathVariable int id, @RequestBody ItemComponent itemComponent, Model model) {
+        model.addAttribute("items", service.getItemById(id));
+        model.addAttribute("producer", service.getAllProducers());
+        model.addAttribute("category", service.getAllCategories());
+        return "edit-product";
     }
-
-    @GetMapping("/product/{id}")
-    public String itemForm(@PathVariable int id, Model model) {
-        model.addAttribute("item", service.getItemById(id));
-        return "item";
-    }
-
-    @PostMapping("/edit-product")
-    public String submit(){
-        return "result";
-    }
-
+    
     @GetMapping("/search-engine")
     public String search() {
         return "search-engine";
