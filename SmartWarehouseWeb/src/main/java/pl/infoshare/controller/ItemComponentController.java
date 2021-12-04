@@ -2,10 +2,7 @@ package pl.infoshare.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.ItemComponentService;
 
@@ -39,12 +36,19 @@ public class ItemComponentController {
         return "delete-product";
     }
 
-    @PostMapping("/edit-product/{id}")
+    @GetMapping("/product/{id}")
+    public String getProduct(@PathVariable int id, Model model){
+        model.addAttribute("item", service.getItemById(id));
+        return "product";
+    }
+
+    @PutMapping("/edit-product/{id}")
     public String editItem(@PathVariable int id, @RequestBody ItemComponent itemComponent, Model model) {
-        model.addAttribute("items", service.getItemById(id));
+        id = itemComponent.getId();
+        model.addAttribute("item", itemComponent);
         model.addAttribute("producer", service.getAllProducers());
         model.addAttribute("category", service.getAllCategories());
-        return "edit-product";
+        return "product";
     }
     
     @GetMapping("/search-engine")
