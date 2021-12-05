@@ -8,7 +8,7 @@ public class User  {
     private String surname;
     private Address deliveryAddress;
     private String phoneNumber;
-    private String mail;
+    private static String mail;
     private String login;
     private String password;
     private UserType userType;

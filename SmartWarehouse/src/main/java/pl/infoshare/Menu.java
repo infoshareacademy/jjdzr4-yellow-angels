@@ -2,10 +2,7 @@ package pl.infoshare;
 
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.ItemComponent;
-import pl.infoshare.service.AddItemService;
-import pl.infoshare.service.DeleteItemService;
-import pl.infoshare.service.EditItemService;
-import pl.infoshare.service.SearchEngine;
+import pl.infoshare.service.*;
 import pl.infoshare.utils.ConsoleInput;
 import pl.infoshare.model.UserType;
 import pl.infoshare.model.User;
@@ -17,7 +14,7 @@ public class Menu {
 
     private List<String> menuOptions = new ArrayList<>();
     private final AddItemService itemService = new AddItemService();
-
+    private final GoodsInService goodsIn = new GoodsInService();
     public void run() {
         menuOptions = fillMenuOptions();
         displayMenu();
@@ -31,8 +28,10 @@ public class Menu {
         menuOptions.add("1. Sprawdz stan magazynu ");
         menuOptions.add("2. Dodaj produkt");
         menuOptions.add("3. Usuń produkt");
-        menuOptions.add("4. Edytuj produkt");
-        menuOptions.add("5. Wyszukiwarka");
+        menuOptions.add("4. Wprowadz towar do magazynu.");
+        menuOptions.add("5. Zorganizuj wysylke towaru.");
+        menuOptions.add("6. Edytuj produkt");
+        menuOptions.add("7. Wyszukiwarka");
 
         return menuOptions;
     }
@@ -74,8 +73,10 @@ public class Menu {
                 return;
             case 1:
                 System.out.println("Sprawdzam stan magazynu...");
+
                 DataFactory.getINSTANCE.getItems().forEach(System.out::println);
                 break;
+
             case 2:
                 System.out.println("Przechodzę do dodawania produktu...");
                 itemService.addItem();
@@ -84,9 +85,13 @@ public class Menu {
                 DeleteItemService.deleteItem();
                 break;
             case 4:
+                 GoodsInService.chooseItemComponent();
+            case 5:
+                //   GoodsOutService
+            case 6:
                 EditItemService.editItem();
                 break;
-            case 5:
+            case 7:
                 SearchEngine search = new SearchEngine();
                 search.runSearching();
                 break;

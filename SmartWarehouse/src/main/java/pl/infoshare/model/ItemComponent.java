@@ -9,6 +9,7 @@ public abstract class ItemComponent {
     private Category category;
     private Producer producer;
     private double weight;
+    private double netPrice;
     private LocalDateTime expirationDate;
     private Warehouse localization;
 
@@ -23,6 +24,15 @@ public abstract class ItemComponent {
         this.name = name;
         this.category = category;
         this.producer = producer;
+    }
+
+    public ItemComponent(int id, String name, Category category, Producer producer,double weight, double netPrice) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.producer = producer;
+        this.weight = weight;
+        this.netPrice = netPrice;
     }
 
     public int getId() {
@@ -59,6 +69,16 @@ public abstract class ItemComponent {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public double getNetPrice() {
+        return netPrice;
+    }
+    public void setNetPrice(double netPrice) {
+        this.netPrice = netPrice;
+    }
+    public double getWeight() {
+        return this.weight;
     }
 
     @Override

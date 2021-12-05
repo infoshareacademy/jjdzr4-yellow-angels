@@ -10,8 +10,9 @@ import static pl.infoshare.model.UserType.COMPANY;
 import static pl.infoshare.model.UserType.PRIVATE;
 
 public class DataFactory {
-    public static final DataFactory getINSTANCE = new DataFactory();
 
+
+    public static DataFactory getINSTANCE = new DataFactory();
     private final ArrayList<ItemComponent> items;
     private ArrayList<Category> categories;
     private ArrayList<Producer> producers;
