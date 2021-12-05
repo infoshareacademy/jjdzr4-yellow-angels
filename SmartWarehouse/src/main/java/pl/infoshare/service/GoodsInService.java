@@ -18,37 +18,45 @@ public class GoodsInService {
 
     private static final DataFactory factory = DataFactory.getINSTANCE;
 
-    public static int chooseItemComponent() {
+    public static void run() {
+        int id = chooseItemComponent();
+        int quantity = incrementItemQuantity();
+    }
 
-        System.out.println("Wybierz produkt dla ktory chcesz przyjac do magazynu.");
-        DataFactory.getINSTANCE.getItems().forEach(System.out::println);
-        System.out.println("Wybierz number z listy produktow, ktory chcesz wprowdzic do magazynu.");
+
+    private static int chooseItemComponent() {
+
+        System.out.println("Wybierz produkt, ktory chcesz przyjac do magazynu.");
+
         boolean isInWarehouse;
-        int input = ConsoleInput.getInputUserInteger();
+        int input = 0;
         do {
-
-            if (input <= factory.getItems().size()) {
+            factory.getItems().forEach(System.out::println);
+            System.out.println("Wybierz number z listy produktow, ktory chcesz wprowdzic do magazynu.");
+            input = ConsoleInput.getInputUserInteger();
+            int finalInput = input;
+            if (factory.getItems().stream().anyMatch(itemComponent -> itemComponent.getId() == finalInput)
+            ) {
                 isInWarehouse = true;
             } else {
                 isInWarehouse = false;
                 System.out.println("Nie ma takiego produktu.");
-                DataFactory.getINSTANCE.getItems().forEach(System.out::println);
-                System.out.println("Wybierz number z listy produktow, ktory chcesz wprowdzic do magazynu.");
-                input = ConsoleInput.getInputUserInteger();
+
             }
         }
-            while (!isInWarehouse) ;{
-                System.out.println("Nie ma takiego produktu.");
-                DataFactory.getINSTANCE.getItems().forEach(System.out::println);
-                System.out.println("Wybierz number z listy produktow, ktory chcesz wprowdzic do magazynu.");
-                input = ConsoleInput.getInputUserInteger();
-            if (input <= factory.getItems().size()) {
-                isInWarehouse = true;
-            }
-        }
+        while (!isInWarehouse);
 
         return input;
-        }
+    }
+
+    private static int incrementItemQuantity() {
+        System.out.println("Podaj ilosc towaru.");
+        return ConsoleInput.getInputUserInteger();
 
     }
+
+
+}
+
+
 

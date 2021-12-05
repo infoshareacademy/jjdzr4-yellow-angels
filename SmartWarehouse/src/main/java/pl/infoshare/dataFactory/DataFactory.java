@@ -30,7 +30,7 @@ public class DataFactory {
 
         items = new ArrayList<>(List.of(
                 new Item(1, "Item 1", c1, p1),
-                new Item(6, "Item 11", c1, p1),
+                new Item(9, "Item 11", c1, p1),
                 new Item(2, "Item 2", c1, p2),
                 new Item(3, "Item 3", c2, p3),
                 new Item(4, "Item 4", c3, p1),

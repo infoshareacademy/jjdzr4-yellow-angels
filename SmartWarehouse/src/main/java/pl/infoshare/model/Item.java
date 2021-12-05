@@ -10,6 +10,6 @@ public class Item extends ItemComponent{
         super(id, name, category, producer);
     }
 
-    public Item(int id, String name, Category category, Producer producer, double weight, double netPrice)
-    {super(id,name,category,producer,weight,netPrice);}
+
+
 }

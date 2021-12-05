@@ -85,7 +85,8 @@ public class Menu {
                 DeleteItemService.deleteItem();
                 break;
             case 4:
-                 GoodsInService.chooseItemComponent();
+                 GoodsInService.run();
+                 break;
             case 5:
                 //   GoodsOutService
             case 6:

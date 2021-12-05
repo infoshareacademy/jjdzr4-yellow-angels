@@ -17,8 +17,8 @@ public class App
     {
         System.out.println( "Tres Hombres Ltd" );
 
-        addUser();
-        greetUser();
+//        addUser();
+//        greetUser();
 
 
         Menu menu = new Menu();
