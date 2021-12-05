@@ -2,10 +2,8 @@ package pl.infoshare.service;
 
 
 import pl.infoshare.dataFactory.DataFactory;
-import pl.infoshare.model.Category;
-import pl.infoshare.model.Item;
-import pl.infoshare.model.ItemComponent;
-import pl.infoshare.model.Producer;
+import pl.infoshare.dataFactory.ItemsInStock;
+import pl.infoshare.model.*;
 import pl.infoshare.utils.ConsoleInput;
 
 import java.util.Optional;
@@ -19,24 +17,28 @@ public class GoodsInService {
     private static final DataFactory factory = DataFactory.getINSTANCE;
 
     public static void run() {
-        int id = chooseItemComponent();
+        ItemComponent item = chooseItemComponent();
         int quantity = incrementItemQuantity();
+        OrderItem order = new OrderItem(item,quantity);
+        ItemsInStock.addItemToStock(order);
     }
 
 
-    private static int chooseItemComponent() {
+    private static ItemComponent chooseItemComponent() {
 
         System.out.println("Wybierz produkt, ktory chcesz przyjac do magazynu.");
-
+        ItemComponent item = null;
         boolean isInWarehouse;
-        int input = 0;
+
         do {
             factory.getItems().forEach(System.out::println);
             System.out.println("Wybierz number z listy produktow, ktory chcesz wprowdzic do magazynu.");
-            input = ConsoleInput.getInputUserInteger();
-            int finalInput = input;
-            if (factory.getItems().stream().anyMatch(itemComponent -> itemComponent.getId() == finalInput)
+            int input = ConsoleInput.getInputUserInteger();
+
+            Optional<ItemComponent> optionalItemComponent = factory.getItems().stream().filter(itemComponent -> itemComponent.getId() == input).findFirst();
+            if (optionalItemComponent.isPresent()
             ) {
+                item = optionalItemComponent.get();
                 isInWarehouse = true;
             } else {
                 isInWarehouse = false;
@@ -46,7 +48,7 @@ public class GoodsInService {
         }
         while (!isInWarehouse);
 
-        return input;
+        return item;
     }
 
     private static int incrementItemQuantity() {
@@ -54,7 +56,6 @@ public class GoodsInService {
         return ConsoleInput.getInputUserInteger();
 
     }
-
 
 }
 
