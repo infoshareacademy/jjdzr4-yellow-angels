@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymleaf.org">
-<head>
+<thead>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
-    <link rel="stylesheet" href="awsm_mischka.css">
-</head>
-<body>
+    <link type="text/css" rel="stylesheet" th:href="@{/bootstrap.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/awsm_mischka.css}">
+</thead>
+<tbody>
 
 <div th:text="${item}"></div>
 
-</body>
+</tbody>
 </html>

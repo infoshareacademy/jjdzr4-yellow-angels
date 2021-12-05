@@ -18,7 +18,7 @@ public class ItemComponentService {
     public ItemComponent getItemById(int id){
         return DataFactory.getINSTANCE.getItems()
                 .stream()
-                .filter(itemComponent -> itemComponent.getId() == id)
+                .filter(i -> i.getId() == id)
                 .findFirst().orElse(null);
     }
 

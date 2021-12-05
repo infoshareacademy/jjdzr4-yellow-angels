@@ -354,9 +354,9 @@ form{
         max-width:80%;
     }
 }
-form select, form label{
-    display:block;
-}
+/*form select, form label{*/
+/*    display:inline-block;*/
+/*}*/
 form label:not(:first-child){
     margin-top:1em;
 }

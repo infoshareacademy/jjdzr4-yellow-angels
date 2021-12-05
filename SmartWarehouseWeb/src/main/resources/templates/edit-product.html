@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW:Edytuj produkt</title>
 
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="awsm_mischka.css">
+    <link type="text/css" rel="stylesheet" th:href="@{/bootstrap.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/awsm_mischka.css}">
 </thead>
 <tbody>
     <h1 th:text="${item}"></h1>
     <form method="post">
         <label for="productName">Name: </label>
-        <input type="text" id="productName" name="productName" th:value="${item.name}"><br>
+        <input type="text" id="productName" name="productName" th:value="${item.name}">
 
         <label for="categories">Category: </label>
         <select id="categories" name="categories">
@@ -21,7 +21,9 @@
                     th:text="${category}"
                     th:selected="${item.category} == ${category} ? true : false">
             </option>
-        </select><br>
+        </select>
+
+        <br>
 
         <label for="producers">Producer: </label>
         <select id="producers" name="producers">
