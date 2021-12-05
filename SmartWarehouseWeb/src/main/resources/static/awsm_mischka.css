@@ -16,6 +16,7 @@ html{
 body{
     margin:1.2em;
     font-size:1rem;
+    padding-bottom: 1em;
 }
 @media (min-width: 20rem){
     body{
@@ -354,9 +355,9 @@ form{
         max-width:80%;
     }
 }
-/*form select, form label{*/
-/*    display:inline-block;*/
-/*}*/
+form select, form label{
+    /*display:inline-block;*/
+}
 form label:not(:first-child){
     margin-top:1em;
 }
@@ -386,7 +387,7 @@ legend{
     color:#9197a3;
 }
 
-button{
+/*button{
     outline:none;
     box-sizing:border-box;
     height:2em;
@@ -416,7 +417,7 @@ button:active{
 button[disabled]{
     color:#9197a3;
     cursor:not-allowed;
-}
+}*/
 
 select{
     outline:none;
@@ -473,8 +474,8 @@ input[type=text], input[type=password], input[type^=date], input[type=email], in
     border-radius:2px;
     background:#d3d7dd;
     color:#3a3b45;
-    display:block;
-    width:100%;
+    display:inline;
+    width:80%;
     line-height:calc(2em - 1px * 2 - (.25em - 1px) * 2);
     -webkit-appearance:none;
     -moz-appearance:none;
