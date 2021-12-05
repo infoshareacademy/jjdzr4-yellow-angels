@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymleaf.org">
-<head>
+<thead>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW:Lista produktów</title>
+
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="awsm_mischka.css">
-</head>
-<body>
+</thead>
+<tbody>
 <p>Lista produktów:</p>
 <p>
 <ul th:each="item: ${items}">
     <li th:text="${item}"></li>
 </ul>
 </p>
-</body>
+</tbody>
 </html>

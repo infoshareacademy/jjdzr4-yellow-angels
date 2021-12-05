@@ -22,16 +22,16 @@ public class ItemComponentService {
                 .findFirst().orElse(null);
     }
 
-    public ItemComponent editItemComponent(ItemComponent itemComponent) {
-
+    public ItemComponent updateItem(ItemComponent itemComponent) {
         return null;
+    }
+
+    public List<Category> getAllCategories() {
+        return DataFactory.getINSTANCE.getCategories();
     }
 
     public List<Producer> getAllProducers() {
         return DataFactory.getINSTANCE.getProducers();
     }
 
-    public List<Category> getAllCategories() {
-        return DataFactory.getINSTANCE.getCategories();
-    }
 }

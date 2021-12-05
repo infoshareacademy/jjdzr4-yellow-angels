@@ -1,5 +1,6 @@
 package pl.infoshare.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,15 +43,21 @@ public class ItemComponentController {
         return "product";
     }
 
+    @GetMapping("/edit-product/{id}")
+    public String editItem(@PathVariable int id, Model model) {
+        model.addAttribute("item", service.getItemById(id));
+        model.addAttribute("categories", service.getAllCategories());
+        model.addAttribute("producers", service.getAllProducers());
+        return "edit-product";
+    }
+
     @PutMapping("/edit-product/{id}")
     public String editItem(@PathVariable int id, @RequestBody ItemComponent itemComponent, Model model) {
-        id = itemComponent.getId();
-        model.addAttribute("item", itemComponent);
-        model.addAttribute("producer", service.getAllProducers());
-        model.addAttribute("category", service.getAllCategories());
+        service.updateItem(itemComponent);
+        model.addAttribute("item", service.getItemById(id));
         return "product";
     }
-    
+
     @GetMapping("/search-engine")
     public String search() {
         return "search-engine";
