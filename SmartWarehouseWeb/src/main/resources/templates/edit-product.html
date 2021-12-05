@@ -14,6 +14,8 @@
         <label for="productName">Name: </label>
         <input type="text" id="productName" name="productName" th:value="${item.name}">
 
+        <br>
+
         <label for="categories">Category: </label>
         <select id="categories" name="categories">
             <option th:each="category : ${categories}"
@@ -33,6 +35,12 @@
                     th:selected="${item.producer} == ${producer} ? true : false">
             </option>
         </select>
+
+        <br>
+
+        <button id="submit" type="submit" class="btn btn-success">Submit</button>
+        <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+
     </form>
 </tbody>
 </html>
