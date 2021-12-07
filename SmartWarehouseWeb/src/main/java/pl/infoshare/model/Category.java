@@ -22,11 +22,17 @@ public class Category {
         return name;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "(" +
                 id +
                 ".) " +
                 name;
+    }*/
+
+    @Override
+    public String toString() {
+        return name;
     }
+
 }

@@ -5,12 +5,13 @@ import pl.infoshare.model.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class DataFactory {
     public static final DataFactory getINSTANCE = new DataFactory();
 
-    private final ArrayList<ItemComponent> items;
+    private final ArrayList<ItemComponent> itemComponents;
     private ArrayList<Category> categories;
     private ArrayList<Producer> producers;
 
@@ -24,14 +25,14 @@ public class DataFactory {
         Producer p2 = new Producer(2, "producer 2", null);
         Producer p3 = new Producer(3, "producer 3", null);
 
-        items = new ArrayList<>(List.of(
+        itemComponents = new ArrayList<>(List.of(
                 new Item(1, "Item 1", c1, p1),
                 new Item(6, "Item 11", c1, p1),
                 new Item(2, "Item 2", c1, p2),
                 new Item(3, "Item 3", c2, p3),
                 new Item(4, "Item 4", c3, p1),
                 new Pack(5, "Item 5", c3, p1)));
-        items.sort(Comparator.comparingInt(ItemComponent::getId));
+        itemComponents.sort(Comparator.comparingInt(ItemComponent::getId));
 
         categories = new ArrayList<>(List.of(
                 c3, c1, c2
@@ -44,8 +45,8 @@ public class DataFactory {
         producers.sort(Comparator.comparingInt(Producer::getId));
     }
 
-    public ArrayList<ItemComponent> getItems() {
-        return items;
+    public ArrayList<ItemComponent> getItemComponents() {
+        return itemComponents;
     }
 
     public ArrayList<Category> getCategories() {
@@ -62,5 +63,25 @@ public class DataFactory {
 
     public void setProducers(ArrayList<Producer> producers) {
         this.producers = producers;
+    }
+
+    public List<Item> getItems(){
+        List <Item> items = new ArrayList<>();
+        for (ItemComponent i : itemComponents){
+            if(Item.class == i.getClass()){
+                items.add((Item)i);
+            }
+        }
+        return items;
+    }
+
+    public List<Pack> getPacks(){
+        List <Pack> packs = new ArrayList<>();
+        for (ItemComponent i : itemComponents){
+            if(Pack.class == i.getClass()){
+                packs.add((Pack)i);
+            }
+        }
+        return packs;
     }
 }
