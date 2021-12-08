@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.infoshare.model.Item;
-import pl.infoshare.model.ItemComponent;
 import pl.infoshare.service.ItemComponentService;
 
 @Controller
@@ -54,7 +53,7 @@ public class ItemComponentController {
         return "edit-item";
     }
 
-    @PostMapping("/edit-item/{id}")
+    @PostMapping(value = "/edit-item/{id}", params = "update")
     public String editItem(@PathVariable("id") int id,
                            @ModelAttribute("item") Item item,
                            Model model) {
@@ -62,7 +61,13 @@ public class ItemComponentController {
         service.updateItem(item, id);
 
         model.addAttribute("item", service.getItemById(id));
-        return "product";
+        return "redirect:/product/{id}";
+    }
+
+    @PostMapping(value = "/edit-item/{id}", params = "cancel")
+    public String cancelEditItem(@PathVariable("id") int id,
+                                 @ModelAttribute("item") Item item) {
+        return "redirect:/products";
     }
 
     @GetMapping("/search-engine")
