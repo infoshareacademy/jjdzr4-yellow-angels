@@ -18,10 +18,10 @@
 
         <label for="categories">Category: </label>
         <select id="categories" name="categories" th:field="*{category}">
-            <option th:each="category : ${categories}"
-                    th:value="${category}"
-                    th:text="${category}"
-                    th:selected="${category} == ${item.category} ? true : false">
+            <option th:each="cat : ${categoriesList}"
+                    th:value="${cat}"
+                    th:text="${cat}"
+                    th:selected="${cat} == ${item.category} ? true : false">
             </option>
         </select>
 

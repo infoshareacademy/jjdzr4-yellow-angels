@@ -48,7 +48,7 @@ public class ItemComponentController {
     @GetMapping("/edit-item/{id}")
     public String editItem(@PathVariable("id") int id, Model model) {
         model.addAttribute("item", service.getItemById(id));
-        model.addAttribute("categories", service.getAllCategories());
+        model.addAttribute("categoriesList", service.getAllCategories());
         model.addAttribute("producers", service.getAllProducers());
         return "edit-item";
     }
