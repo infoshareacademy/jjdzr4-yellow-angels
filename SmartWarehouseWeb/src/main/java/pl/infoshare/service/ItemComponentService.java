@@ -35,12 +35,16 @@ public class ItemComponentService {
 
         existingItem.setId(id);
         existingItem.setName(item.getName());
-        existingItem.setCategory(item.getCategory());
+        existingItem.setCategory(findCategoryById(item.getCategory().getName()));
         existingItem.setProducer(item.getProducer());
 
         List<ItemComponent> items = factory.getItemComponents();
-        items.set(items.indexOf(existingItem), item);
+        items.set(items.indexOf(existingItem), existingItem);
         return item;
+    }
+
+    private Category findCategoryById(String id){
+        return factory.getCategories().stream().filter(i -> i.getId() == Integer.parseInt(id)).findFirst().orElse(null);
     }
 
     public List<Category> getAllCategories() {
