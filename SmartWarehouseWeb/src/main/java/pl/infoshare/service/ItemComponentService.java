@@ -30,7 +30,7 @@ public class ItemComponentService {
                 .findFirst().orElse(null);
     }
 
-    public void updateItem(Item item, int id) {
+    public Item updateItem(Item item, int id) {
         Item existingItem = getItemById(id);
 
         existingItem.setId(id);
@@ -40,6 +40,7 @@ public class ItemComponentService {
 
         List<ItemComponent> items = factory.getItemComponents();
         items.set(items.indexOf(existingItem), item);
+        return item;
     }
 
     public List<Category> getAllCategories() {
