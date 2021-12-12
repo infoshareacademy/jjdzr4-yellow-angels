@@ -63,6 +63,13 @@ public class ItemComponentController {
         return "redirect:/product/{id}";
     }
 
+    @PutMapping(path = "/edit-item/{id}", params = "cancel")
+    public String cancelUpdateItem(@PathVariable int id,
+                                   Model model) {
+        model.addAttribute("items", factory.getItemComponents());
+        return "redirect:/products";
+    }
+
     @GetMapping("/search-engine")
     public String search() {
         return "search-engine";

@@ -11,9 +11,6 @@
 <tbody>
     <h1 th:text="${item}"></h1>
     <form th:action="@{/edit-item/{id} (id=${item.id})}" th:object="${item}" th:method="post">
-<!--        <input type="hidden" name="_method" value="put" />-->
-<!--        <label for="productName">Name: </label>-->
-<!--        <input type="text" id="productName" name="productName" th:field="${item.name}" >-->
 
         <label for="productName">Name: </label>
         <input type="hidden" name="_method" th:value="put" />
@@ -22,7 +19,7 @@
         <br>
 
         <label for="categories">Category: </label>
-        <select id="categories" name="categories" th:field="*{category}">
+        <select id="categories" name="categories" th:field="*{category}" />
             <option th:each="cat : ${categoriesList}"
                     th:value="${cat.id}"
                     th:text="${cat}"
@@ -33,7 +30,7 @@
         <br>
 
         <label for="producers">Producer: </label>
-        <select id="producers" name="producers" th:field="*{producer}">
+        <select id="producers" name="producers" th:field="*{producer}" />
             <option th:each="prod : ${producersList}"
                     th:value="${prod.id}"
                     th:text="${prod}"

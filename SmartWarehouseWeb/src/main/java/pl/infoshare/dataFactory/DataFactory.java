@@ -10,9 +10,9 @@ import java.util.List;
 public class DataFactory {
     public static final DataFactory getINSTANCE = new DataFactory();
 
-    private final ArrayList<ItemComponent> itemComponents;
-    private ArrayList<Category> categories;
-    private ArrayList<Producer> producers;
+    private List<ItemComponent> itemComponents;
+    private List<Category> categories;
+    private List<Producer> producers;
 
     private DataFactory() {
 
@@ -44,11 +44,15 @@ public class DataFactory {
         producers.sort(Comparator.comparingInt(Producer::getId));
     }
 
-    public ArrayList<ItemComponent> getItemComponents() {
+    public List<ItemComponent> getItemComponents() {
         return itemComponents;
     }
 
-    public ArrayList<Category> getCategories() {
+    public void setItemComponents(List<ItemComponent> itemComponents) {
+        this.itemComponents = itemComponents;
+    }
+
+    public List<Category> getCategories() {
         return categories;
     }
 
@@ -56,7 +60,7 @@ public class DataFactory {
         this.categories = categories;
     }
 
-    public ArrayList<Producer> getProducers() {
+    public List<Producer> getProducers() {
         return producers;
     }
 

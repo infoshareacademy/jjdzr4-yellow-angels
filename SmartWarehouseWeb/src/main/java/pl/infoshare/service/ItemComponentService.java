@@ -23,9 +23,15 @@ public class ItemComponentService {
         String producerIdFromForm = item.getProducer().getName();
         existingItem.setProducer(factory.findProducerById(producerIdFromForm));
 
-        List<ItemComponent> items = factory.getItemComponents();
-        items.set(items.indexOf(existingItem), existingItem);
+        updateItemComponents(existingItem);
+
         return item;
+    }
+
+    private void updateItemComponents(Item item){
+        List<ItemComponent> items = factory.getItemComponents();
+        items.set(items.indexOf(item), item);
+        factory.setItemComponents(items);
     }
 
 }

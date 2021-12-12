@@ -1,5 +1,7 @@
 package pl.infoshare.model;
 
+import java.util.Objects;
+
 public class Producer {
     private int id;
     public String name;
@@ -50,5 +52,18 @@ public class Producer {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producer producer = (Producer) o;
+        return id == producer.id && Objects.equals(name, producer.name) && Objects.equals(address, producer.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address);
     }
 }
