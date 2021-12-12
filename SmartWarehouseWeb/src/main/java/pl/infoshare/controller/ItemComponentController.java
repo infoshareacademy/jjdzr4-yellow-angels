@@ -25,7 +25,8 @@ public class ItemComponentController {
 
     @GetMapping("/products")
     public String getAll(Model model) {
-        model.addAttribute("items", factory.getItemComponents());
+        model.addAttribute("items", factory.getItems());
+        model.addAttribute("packs", factory.getPacks());
         return "products";
     }
 

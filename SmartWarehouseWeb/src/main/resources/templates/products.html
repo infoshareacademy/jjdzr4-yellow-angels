@@ -3,17 +3,62 @@
 <thead>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SW:Lista produktów</title>
+    <title>SW:Products</title>
 
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="awsm_mischka.css">
 </thead>
 <tbody>
-<p>Lista produktów:</p>
-<p>
-<ul th:each="item: ${items}">
-    <li th:text="${item}"></li>
-</ul>
-</p>
+<h1>All products</h1>
+
+<div>
+    <h2>Items</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Producer</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item: ${items}">
+                <th scope="row" th:text="${item.name}"></th>
+                <th scope="row" th:text="${item.category}"></th>
+                <th scope="row" th:text="${item.producer}"></th>
+                <th scope="row">
+                    <button name="editItem" type="submit" class="btn btn-primary">Edit</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+    <h2>Packs</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Producer</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pack: ${packs}">
+            <th scope="row" th:text="${pack.name}"></th>
+            <th scope="row" th:text="${pack.category}"></th>
+            <th scope="row" th:text="${pack.producer}"></th>
+            <th scope="row">
+                <button name="editPack" type="submit" class="btn btn-primary">Edit</button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </tbody>
 </html>
