@@ -94,4 +94,8 @@ public class DataFactory {
     public Category findCategoryById(String id) {
         return getCategories().stream().filter(i -> i.getId() == Integer.parseInt(id)).findFirst().orElse(null);
     }
+
+    public Producer findProducerById(String id) {
+        return getProducers().stream().filter(i -> i.getId() == Integer.parseInt(id)).findFirst().orElse(null);
+    }
 }
