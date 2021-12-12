@@ -5,7 +5,6 @@ import pl.infoshare.model.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class DataFactory {
@@ -65,23 +64,34 @@ public class DataFactory {
         this.producers = producers;
     }
 
-    public List<Item> getItems(){
-        List <Item> items = new ArrayList<>();
-        for (ItemComponent i : itemComponents){
-            if(Item.class == i.getClass()){
-                items.add((Item)i);
+    public List<Item> getItems() {
+        List<Item> items = new ArrayList<>();
+        for (ItemComponent i : itemComponents) {
+            if (Item.class == i.getClass()) {
+                items.add((Item) i);
             }
         }
         return items;
     }
 
-    public List<Pack> getPacks(){
-        List <Pack> packs = new ArrayList<>();
-        for (ItemComponent i : itemComponents){
-            if(Pack.class == i.getClass()){
-                packs.add((Pack)i);
+    public List<Pack> getPacks() {
+        List<Pack> packs = new ArrayList<>();
+        for (ItemComponent i : itemComponents) {
+            if (Pack.class == i.getClass()) {
+                packs.add((Pack) i);
             }
         }
         return packs;
+    }
+
+    public Item getItemById(int id) {
+        return getItems()
+                .stream()
+                .filter(i -> i.getId() == id)
+                .findFirst().orElse(null);
+    }
+
+    public Category findCategoryById(String id) {
+        return getCategories().stream().filter(i -> i.getId() == Integer.parseInt(id)).findFirst().orElse(null);
     }
 }
