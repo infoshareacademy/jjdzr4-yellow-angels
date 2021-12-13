@@ -13,27 +13,28 @@
 
 <div>
     <h2>Items</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Producer</th>
-                <th scope="col">Edit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="item: ${items}">
-                <th scope="row" th:text="${item.name}"></th>
-                <th scope="row" th:text="${item.category}"></th>
-                <th scope="row" th:text="${item.producer}"></th>
-                <th scope="row">
-                    <button name="editItem" type="submit" class="btn btn-primary">Edit</button>
-                </th>
-            </tr>
-        </tbody>
-    </table>
-
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Producer</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <th scope="row" th:text="${item.name}"></th>
+                    <th scope="row" th:text="${item.category}"></th>
+                    <th scope="row" th:text="${item.producer}"></th>
+                    <th scope="row">
+                        <form th:action="@{/edit-item/{id} (id=${item.id})}" th:method="get">
+                            <button type="submit" name="editItem" class="btn btn-primary">Edit</button>
+                        </form>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
 </div>
 
 <div>
