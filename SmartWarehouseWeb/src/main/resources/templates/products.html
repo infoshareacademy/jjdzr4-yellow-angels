@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW:Products</title>
 
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="awsm_mischka.css">
+    <link type="text/css" rel="stylesheet" href="bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="awsm_mischka.css">
+    <link type="text/css" rel="stylesheet" href="additional_styles.css">
 </thead>
 <tbody>
+
+<div id="mainContainer">
+
 <h1>All products</h1>
 
 <div>
@@ -23,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="item : ${items}">
+                <tr th:each="item : ${items}" class="center_table">
                     <th scope="row" th:text="${item.name}"></th>
                     <th scope="row" th:text="${item.category}"></th>
                     <th scope="row" th:text="${item.producer}"></th>
@@ -61,5 +65,6 @@
     </table>
 </div>
 
+</div> <!-- mainContainer -->
 </tbody>
 </html>
