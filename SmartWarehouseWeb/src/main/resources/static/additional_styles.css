@@ -1,7 +1,22 @@
 @charset "UTF-8";
 
+:root {
+    --bs-body-color-rgb: 33, 37, 41;
+    --content-width: 720px;
+}
+
+body {
+    background-color: var(--bs-body-color-rgb);
+}
+
+.mainNav {
+    max-width: var(--content-width);
+    padding-left: 0;
+}
+
 #mainContainer {
-    margin: 5px;
+    max-width: var(--content-width);
+    margin: auto;
 }
 
 table {
@@ -9,13 +24,24 @@ table {
 }
 
 table thead tr {
-    color:#c34138;
+    color: #c34138;
 }
 
-table tr th{
+table tr th {
     vertical-align: middle;
     text-align: center;
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 5px
 }
 
+footer {
+    margin-top:6em;
+    text-align:center;
+    font-size:0.8rem;
+    color:#9197a3;
+    background-color: white;
+}
+
+body footer {
+    max-width: none;
+}

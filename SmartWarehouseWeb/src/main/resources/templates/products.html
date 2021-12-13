@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymleaf.org">
 <thead>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SW:Products</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SW:Products</title>
 
-    <link type="text/css" rel="stylesheet" href="bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="awsm_mischka.css">
-    <link type="text/css" rel="stylesheet" href="additional_styles.css">
+<link type="text/css" rel="stylesheet" href="bootstrap.css">
+<link type="text/css" rel="stylesheet" href="awsm_mischka.css">
+<link type="text/css" rel="stylesheet" href="additional_styles.css">
 </thead>
 <tbody>
+<div th:insert="menu.html :: mainNavbar"></div>
+    <div id="mainContainer">
 
-<div id="mainContainer">
+        <h1>All products</h1>
 
-<h1>All products</h1>
-
-<div>
-    <h2>Items</h2>
-        <table class="table table-striped">
-            <thead>
+        <div>
+            <h2>Items</h2>
+            <table class="table table-striped">
+                <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Producer</th>
                     <th scope="col">Edit</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr th:each="item : ${items}" class="center_table">
                     <th scope="row" th:text="${item.name}"></th>
                     <th scope="row" th:text="${item.category}"></th>
@@ -37,34 +37,35 @@
                         </form>
                     </th>
                 </tr>
-            </tbody>
-        </table>
-</div>
+                </tbody>
+            </table>
+        </div>
 
-<div>
-    <h2>Packs</h2>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Producer</th>
-            <th scope="col">Edit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="pack: ${packs}">
-            <th scope="row" th:text="${pack.name}"></th>
-            <th scope="row" th:text="${pack.category}"></th>
-            <th scope="row" th:text="${pack.producer}"></th>
-            <th scope="row">
-                <button name="editPack" type="submit" class="btn btn-primary">Edit</button>
-            </th>
-        </tr>
-        </tbody>
-    </table>
-</div>
+        <div>
+            <h2>Packs</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Producer</th>
+                    <th scope="col">Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pack: ${packs}">
+                    <th scope="row" th:text="${pack.name}"></th>
+                    <th scope="row" th:text="${pack.category}"></th>
+                    <th scope="row" th:text="${pack.producer}"></th>
+                    <th scope="row">
+                        <button name="editPack" type="submit" class="btn btn-primary">Edit</button>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-</div> <!-- mainContainer -->
+    </div> <!-- mainContainer -->
+<footer th:insert="footer.html :: mainFooter"></footer>
 </tbody>
 </html>

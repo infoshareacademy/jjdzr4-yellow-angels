@@ -4,6 +4,7 @@
  * Copyright 2015 Igor Adamenko <mail@igoradamenko.com> (https://igoradamenko.com)
  * Licensed under MIT (https://github.com/igoradamenko/awsm.css/blob/master/LICENSE.md)
  */
+
 html{
     font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "PT Sans", "Open Sans", "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:100%;
@@ -16,7 +17,6 @@ html{
 body{
     margin:1.2em;
     font-size:1rem;
-    padding-bottom: 1em;
 }
 @media (min-width: 20rem){
     body{
@@ -305,7 +305,7 @@ table{
     max-width:100%;
     text-align:left;
     vertical-align:top;
-    background:linear-gradient(rgba(58, 59, 69, 0.15) 0%, rgba(58, 59, 69, 0.15) 100%) 0 0, linear-gradient(rgba(58, 59, 69, 0.15) 0%, rgba(58, 59, 69, 0.15) 100%) 100% 0;
+    /*background:linear-gradient(rgba(58, 59, 69, 0.15) 0%, rgba(58, 59, 69, 0.15) 100%) 0 0, linear-gradient(rgba(58, 59, 69, 0.15) 0%, rgba(58, 59, 69, 0.15) 100%) 100% 0;*/
     background-attachment:scroll, scroll;
     background-size:1px 100%, 1px 100%;
     background-repeat:no-repeat, no-repeat;
@@ -323,14 +323,14 @@ table td, table th{
     border-left:0;
 }
 table td:first-child, table th:first-child{
-    padding-left:0;
+    /*padding-left:0;*/
     background-image:linear-gradient(to right, #d3d7dd 50%, rgba(211, 215, 221, 0) 100%);
     background-size:2px 100%;
     background-repeat:no-repeat;
 }
 table td:last-child, table th:last-child{
-    padding-right:0;
-    border-right:0;
+    /*padding-right:0;*/
+    /*border-right:0;*/
     background-image:linear-gradient(to left, #d3d7dd 50%, rgba(211, 215, 221, 0) 100%);
     background-position:100% 0;
     background-size:2px 100%;
