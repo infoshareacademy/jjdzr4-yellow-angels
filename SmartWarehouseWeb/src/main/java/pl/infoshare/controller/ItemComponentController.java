@@ -6,16 +6,19 @@ import org.springframework.web.bind.annotation.*;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
 import pl.infoshare.service.ItemComponentService;
+import pl.infoshare.service.MenuObjectService;
 
 @Controller
 @RequestMapping
 public class ItemComponentController {
 
     private final ItemComponentService service;
+    private final MenuObjectService menuService;
     private final DataFactory factory = DataFactory.getINSTANCE;
 
-    public ItemComponentController(ItemComponentService service) {
+    public ItemComponentController(ItemComponentService service, MenuObjectService menuService) {
         this.service = service;
+        this.menuService = menuService;
     }
 
     @GetMapping("/stock")
@@ -25,6 +28,7 @@ public class ItemComponentController {
 
     @GetMapping("/products")
     public String getAll(Model model) {
+        model.addAttribute("menuObjects", menuService.getMenu());
         model.addAttribute("items", factory.getItems());
         model.addAttribute("packs", factory.getPacks());
         return "products";
