@@ -23,6 +23,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Producer</th>
+                    <th scope="col">Details</th>
                     <th scope="col">Edit</th>
                 </tr>
                 </thead>
@@ -31,6 +32,11 @@
                     <th scope="row" th:text="${item.name}"></th>
                     <th scope="row" th:text="${item.category}"></th>
                     <th scope="row" th:text="${item.producer}"></th>
+                    <th scope="row">
+                        <form th:action="@{/product/{id} (id=${item.id})}" th:method="get">
+                            <button type="submit" name="showItem" class="btn btn-success">Show</button>
+                        </form>
+                    </th>
                     <th scope="row">
                         <form th:action="@{/edit-item/{id} (id=${item.id})}" th:method="get">
                             <button type="submit" name="editItem" class="btn btn-primary">Edit</button>
@@ -49,6 +55,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Producer</th>
+                    <th scope="col">Details</th>
                     <th scope="col">Edit</th>
                 </tr>
                 </thead>
@@ -58,7 +65,14 @@
                     <th scope="row" th:text="${pack.category}"></th>
                     <th scope="row" th:text="${pack.producer}"></th>
                     <th scope="row">
-                        <button name="editPack" type="submit" class="btn btn-primary">Edit</button>
+                        <form th:action="@{/product/{id} (id=${pack.id})}" th:method="get">
+                            <button type="submit" name="showPack" class="btn btn-success">Show</button>
+                        </form>
+                    </th>
+                    <th scope="row">
+                        <form th:action="@{/edit-pack/{id} (id=${pack.id})}" th:method="get">
+                            <button type="submit" name="editPack" class="btn btn-primary">Edit</button>
+                        </form>
                     </th>
                 </tr>
                 </tbody>

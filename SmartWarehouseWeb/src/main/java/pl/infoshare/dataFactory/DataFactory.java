@@ -88,8 +88,8 @@ public class DataFactory {
         return packs;
     }
 
-    public Item getItemById(int id) {
-        return getItems()
+    public ItemComponent getItemComponentById(int id) {
+        return getItemComponents()
                 .stream()
                 .filter(i -> i.getId() == id)
                 .findFirst().orElse(null);

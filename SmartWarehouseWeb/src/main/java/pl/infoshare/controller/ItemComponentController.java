@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
+import pl.infoshare.model.Pack;
 import pl.infoshare.service.ItemComponentService;
 import pl.infoshare.service.MenuObjectService;
 
@@ -46,13 +47,13 @@ public class ItemComponentController {
 
     @GetMapping("/product/{id}")
     public String getProduct(@PathVariable("id") int id, Model model) {
-        model.addAttribute("item", factory.getItemById(id));
+        model.addAttribute("item", factory.getItemComponentById(id));
         return "product";
     }
 
     @GetMapping("/edit-item/{id}")
     public String editItem(@PathVariable("id") int id, Model model) {
-        model.addAttribute("item", factory.getItemById(id));
+        model.addAttribute("item", factory.getItemComponentById(id));
         model.addAttribute("categoriesList", factory.getCategories());
         model.addAttribute("producersList", factory.getProducers());
         return "edit-item";
@@ -70,6 +71,29 @@ public class ItemComponentController {
 
     @PutMapping(path = "/edit-item/{id}", params = "cancel")
     public String cancelUpdateItem(@PathVariable int id){
+        return "redirect:/products";
+    }
+
+    @GetMapping("/edit-pack/{id}")
+    public String editPack(@PathVariable("id") int id, Model model) {
+        model.addAttribute("item", factory.getItemComponentById(id));
+        model.addAttribute("categoriesList", factory.getCategories());
+        model.addAttribute("producersList", factory.getProducers());
+        return "edit-pack";
+    }
+
+    @PutMapping(path = "/edit-pack/{id}", params = "update")
+    public String editPackById(@PathVariable int id,
+                               @ModelAttribute("pack") Pack pack,
+                               Model model) {
+
+        Pack updatedPack = service.updatePack(pack, id);
+        model.addAttribute("item", updatedPack);
+        return "redirect:/product/{id}";
+    }
+
+    @PutMapping(path = "/edit-pack/{id}", params = "cancel")
+    public String cancelUpdatePack(@PathVariable int id){
         return "redirect:/products";
     }
 
