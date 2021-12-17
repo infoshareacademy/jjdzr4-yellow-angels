@@ -64,7 +64,7 @@ public class ItemComponentController {
                                @ModelAttribute("item") Item item,
                                Model model) {
 
-        Item updatedItem = service.updateItem(item, id);
+        Item updatedItem = service.updateItem(item);
         model.addAttribute("item", updatedItem);
         return "redirect:/product/{id}";
     }
@@ -87,7 +87,7 @@ public class ItemComponentController {
                                @ModelAttribute("pack") Pack pack,
                                Model model) {
 
-        Pack updatedPack = service.updatePack(pack, id);
+        Pack updatedPack = service.updatePack(pack);
         model.addAttribute("item", updatedPack);
         return "redirect:/product/{id}";
     }
