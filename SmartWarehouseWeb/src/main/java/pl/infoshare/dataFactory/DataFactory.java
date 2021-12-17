@@ -2,9 +2,7 @@ package pl.infoshare.dataFactory;
 
 import pl.infoshare.model.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class DataFactory {
@@ -24,13 +22,22 @@ public class DataFactory {
         Producer p2 = new Producer(2, "producer 2", null);
         Producer p3 = new Producer(3, "producer 3", null);
 
+        ItemComponent item1 = new Item(1, "Item 1", c1, p1);
+        ItemComponent item2 = new Item(2, "Item 2", c1, p2);
+        ItemComponent item3 = new Item(3, "Item 3", c2, p3);
+        ItemComponent item4 = new Item(4, "Item 4", c3, p1);
+        ItemComponent item6 = new Item(6, "Item 11", c1, p1);
+
         itemComponents = new ArrayList<>(List.of(
-                new Item(1, "Item 1", c1, p1),
-                new Item(6, "Item 11", c1, p1),
-                new Item(2, "Item 2", c1, p2),
-                new Item(3, "Item 3", c2, p3),
-                new Item(4, "Item 4", c3, p1),
-                new Pack(5, "Item 5", c3, p1)));
+                item1, item2, item3, item4, item6));
+
+        Map<ItemComponent, Integer> packOneContent = new HashMap<>();
+        packOneContent.put(item1, 20);
+
+        ItemComponent pack1 = new Pack(7, "Pack 1", c1, p1, packOneContent);
+
+        itemComponents.add(pack1);
+
         itemComponents.sort(Comparator.comparingInt(ItemComponent::getId));
 
         categories = new ArrayList<>(List.of(
