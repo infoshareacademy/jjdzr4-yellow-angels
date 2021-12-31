@@ -13,7 +13,7 @@
 
     <label for="productName">Name: </label>
     <input type="hidden" name="_method" th:value="put"/>
-    <input th:type="text" id="productName" name="productName" th:field="${pack.name}">
+    <input th:type="text" id="productName" name="productName" th:field="*{name}">
 
     <br>
 
@@ -22,7 +22,7 @@
     <option th:each="cat : ${categoriesList}"
             th:value="${cat.id}"
             th:text="${cat}"
-            th:selected="${cat} == ${pack.category} ? true : false">
+            th:selected="${cat} == ${pack.category}">
     </option>
     </select>
 
@@ -33,7 +33,7 @@
     <option th:each="prod : ${producersList}"
             th:value="${prod.id}"
             th:text="${prod}"
-            th:selected="${prod} == ${pack.producer} ? true : false">
+            th:selected="${prod} == ${pack.producer}">
     </option>
     </select>
 
