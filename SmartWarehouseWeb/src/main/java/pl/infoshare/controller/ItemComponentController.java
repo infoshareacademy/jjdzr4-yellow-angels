@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
+import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Pack;
 import pl.infoshare.service.ItemComponentService;
 import pl.infoshare.service.MenuObjectService;
@@ -76,7 +77,12 @@ public class ItemComponentController {
 
     @GetMapping("/edit-pack/{id}")
     public String editPack(@PathVariable("id") int id, Model model) {
-        model.addAttribute("item", factory.getItemComponentById(id));
+        Pack pack = (Pack) factory.getItemComponentById(id);
+
+//        model.addAttribute("pack", factory.getItemComponentById(id));
+        model.addAttribute("pack", pack);
+        model.addAttribute("currentPackItems", pack.getItems().keySet());
+        model.addAttribute("items", factory.getItems());
         model.addAttribute("categoriesList", factory.getCategories());
         model.addAttribute("producersList", factory.getProducers());
         return "edit-pack";
@@ -88,7 +94,7 @@ public class ItemComponentController {
                                Model model) {
 
         Pack updatedPack = service.updatePack(pack);
-        model.addAttribute("item", updatedPack);
+        model.addAttribute("pack", updatedPack);
         return "redirect:/product/{id}";
     }
 

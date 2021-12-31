@@ -33,8 +33,9 @@ public class DataFactory {
 
         Map<ItemComponent, Integer> packOneContent = new HashMap<>();
         packOneContent.put(item1, 20);
+        packOneContent.put(item2, 10);
 
-        ItemComponent pack1 = new Pack(7, "Pack 1", c1, p1, packOneContent);
+        ItemComponent pack1 = new Pack(7, "Pack 1", c1, p2, packOneContent);
 
         itemComponents.add(pack1);
 
