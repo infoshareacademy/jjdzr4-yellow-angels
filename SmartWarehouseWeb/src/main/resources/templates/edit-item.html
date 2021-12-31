@@ -5,43 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" th:href="@{/bootstrap.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/awsm_mischka.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/additional_styles.css}">
     <title th:text="#{title.product}"></title>
 </head>
 <body>
+<div id="mainContainer">
     <h1 th:text="${item}"></h1>
-    <form th:action="@{/edit-item/{id} (id=${item.id})}" th:object="${item}" th:method="post">
+    <div>
+        <form th:action="@{/edit-item/{id} (id=${item.id})}" th:object="${item}" th:method="post">
 
-        <label for="productName" th:text="#{itemComponent.name}"></label>
-        <input type="hidden" name="_method" th:value="put" />
-        <input th:type="text" id="productName" name="productName" th:field="*{name}" >
+            <label for="productName" th:text="#{itemComponent.name}"></label>
+            <input type="hidden" name="_method" th:value="put"/>
+            <input th:type="text" id="productName" name="productName" th:field="*{name}">
 
-        <br>
+            <br>
 
-        <label for="categories" th:text="#{itemComponent.category}"></label>
-        <select id="categories" name="categories" th:field="*{category}" />
+            <label for="categories" th:text="#{itemComponent.category}"></label>
+            <select id="categories" name="categories" th:field="*{category}"/>
             <option th:each="cat : ${categoriesList}"
                     th:value="${cat.id}"
                     th:text="${cat}"
                     th:selected="${cat} == ${item.category}">
             </option>
-        </select>
+            </select>
 
-        <br>
+            <br>
 
-        <label for="producers" th:text="#{itemComponent.producer}"></label>
-        <select id="producers" name="producers" th:field="*{producer}" />
+            <label for="producers" th:text="#{itemComponent.producer}"></label>
+            <select id="producers" name="producers" th:field="*{producer}"/>
             <option th:each="prod : ${producersList}"
                     th:value="${prod.id}"
                     th:text="${prod}"
                     th:selected="${prod} == ${item.producer}">
             </option>
-        </select>
+            </select>
 
-        <br>
+            <br>
 
-        <button type="submit" name="update" class="btn btn-success" th:text="#{button.update}"></button>
-        <button type="submit" name="cancel" class="btn btn-danger" th:text="#{button.cancel}"></button>
+            <button type="submit" name="update" class="btn btn-success" th:text="#{button.update}"></button>
+            <button type="submit" name="cancel" class="btn btn-danger" th:text="#{button.cancel}"></button>
 
-    </form>
+        </form>
+    </div>
+</div>
+
+<footer th:insert="footer.html :: mainFooter"></footer>
+
 </body>
 </html>

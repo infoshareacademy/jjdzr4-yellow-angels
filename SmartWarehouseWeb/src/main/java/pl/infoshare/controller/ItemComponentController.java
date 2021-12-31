@@ -78,10 +78,11 @@ public class ItemComponentController {
     @GetMapping("/edit-pack/{id}")
     public String editPack(@PathVariable("id") int id, Model model) {
         Pack pack = (Pack) factory.getItemComponentById(id);
-
+        model.addAttribute("menuObjects", menuService.getMenu());
 //        model.addAttribute("pack", factory.getItemComponentById(id));
         model.addAttribute("pack", pack);
-        model.addAttribute("currentPackItems", pack.getItems().keySet());
+//        model.addAttribute("currentPackItems", pack.getItems().keySet());
+        model.addAttribute("currentPackItems", pack.getItems());
         model.addAttribute("items", factory.getItems());
         model.addAttribute("categoriesList", factory.getCategories());
         model.addAttribute("producersList", factory.getProducers());
