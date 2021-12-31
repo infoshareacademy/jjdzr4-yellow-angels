@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <thead>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 
         <label for="productName">Name: </label>
         <input type="hidden" name="_method" th:value="put" />
-        <input th:type="text" id="productName" name="productName" th:field="${item.name}" >
+        <input th:type="text" id="productName" name="productName" th:field="*{name}" >
 
         <br>
 
