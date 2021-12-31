@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<thead>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SW:Edit item</title>
-
     <link type="text/css" rel="stylesheet" th:href="@{/bootstrap.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/awsm_mischka.css}">
-</thead>
-<tbody>
+    <title>SW:Edit item</title>
+</head>
+<body>
     <h1 th:text="${item}"></h1>
     <form th:action="@{/edit-item/{id} (id=${item.id})}" th:object="${item}" th:method="post">
 
@@ -23,7 +22,7 @@
             <option th:each="cat : ${categoriesList}"
                     th:value="${cat.id}"
                     th:text="${cat}"
-                    th:selected="${cat} == ${item.category} ? true : false">
+                    th:selected="${cat} == ${item.category}">
             </option>
         </select>
 
@@ -34,7 +33,7 @@
             <option th:each="prod : ${producersList}"
                     th:value="${prod.id}"
                     th:text="${prod}"
-                    th:selected="${prod} == ${item.producer} ? true : false">
+                    th:selected="${prod} == ${item.producer}">
             </option>
         </select>
 
@@ -44,5 +43,5 @@
         <button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
 
     </form>
-</tbody>
+</body>
 </html>
