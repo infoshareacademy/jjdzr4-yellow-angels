@@ -112,4 +112,13 @@ public class ItemComponentController {
     }
 
 
+    @GetMapping("/add-item")
+    public String getAddItemForm() {
+        return "add-item";
+    }
+
+    @GetMapping("/add-pack")
+    public String getAddPackForm() {
+        return "add-pack";
+    }
 }
