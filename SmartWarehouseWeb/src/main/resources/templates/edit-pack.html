@@ -63,6 +63,40 @@
                 </tbody>
             </table>
 
+            <br>
+            <table id="addItemsTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" th:text="#{tableHeadline.item}"></th>
+                    <th scope="col" th:text="#{tableHeadline.quantity}"></th>
+                    <th scope="col" th:text="#{tableHeadline.add}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center_table">
+                    <th scope="row">
+                        <label for="producers"></label>
+                        <select id="items" th:field="*{items}"/>
+                        <option th:each="item : ${items}"
+                                th:value="${item.id}"
+                                th:text="${item}">
+                        </option>
+                        </select>
+                    </th>
+                    <th scope="row">
+                        <label for="itemQuantity"></label>
+                        <input th:type="text" id="itemQuantity" name="productName">
+                    </th>
+                    <th scope="row">
+                        <button type="button" name="addItem" class="btn btn-success"
+
+                                th:text="#{button.plus}"
+                                onclick="addRow(this)"></button>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+
             <button type="submit" name="update" class="btn btn-success" th:text="#{button.update}"></button>
             <button type="submit" name="cancel" class="btn btn-danger" th:text="#{button.cancel}"></button>
 
@@ -76,6 +110,10 @@
     function deleteRow(row) {
         var i = row.parentNode.parentNode.rowIndex;
         document.getElementById("itemsTable").deleteRow(i);
+    }
+
+    function addRow(row) {
+
     }
 </script>
 
