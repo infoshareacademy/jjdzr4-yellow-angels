@@ -45,4 +45,13 @@ public class ItemComponentController {
         return "search-engine";
     }
 
+    @GetMapping("/add-item")
+    public String getAddItemForm() {
+        return "add-item";
+    }
+
+    @GetMapping("/add-pack")
+    public String getAddPackForm() {
+        return "add-pack";
+    }
 }
