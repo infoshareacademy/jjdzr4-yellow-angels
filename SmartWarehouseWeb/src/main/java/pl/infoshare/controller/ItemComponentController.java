@@ -3,12 +3,17 @@ package pl.infoshare.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.Item;
 import pl.infoshare.service.ItemComponentService;
 
 @Controller
 public class ItemComponentController {
 
     private final ItemComponentService service;
+    private final DataFactory factory = DataFactory.getINSTANCE;
 
     public ItemComponentController(ItemComponentService service) {
         this.service = service;
@@ -37,7 +42,7 @@ public class ItemComponentController {
 
     @GetMapping("/edit-product")
     public String editItem(){
-        return "delete-product";
+        return "edit-product";
     }
 
     @GetMapping("/search-engine")
@@ -46,8 +51,17 @@ public class ItemComponentController {
     }
 
     @GetMapping("/add-item")
-    public String getAddItemForm() {
+    public String getAddItemForm(Model model) {
+        model.addAttribute("item", new Item());
+        model.addAttribute("categoriesList", factory.getCategories());
+        model.addAttribute("producersList", factory.getProducers());
         return "add-item";
+    }
+
+    @PostMapping("/add-new-item")
+    public String addNewItem(@ModelAttribute ("item") Item item) {
+        
+        return "redirect:/";
     }
 
     @GetMapping("/add-pack")
