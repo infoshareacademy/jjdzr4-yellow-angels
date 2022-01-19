@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
+import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import pl.infoshare.service.ItemComponentService;
 
 @Controller
@@ -14,9 +15,11 @@ public class ItemComponentController {
 
     private final ItemComponentService service;
     private final DataFactory factory = DataFactory.getINSTANCE;
+    private ItemComponentRepositoryImpl repository;
 
-    public ItemComponentController(ItemComponentService service) {
+    public ItemComponentController(ItemComponentService service, ItemComponentRepositoryImpl repository) {
         this.service = service;
+        this.repository = repository;
     }
 
     @GetMapping("/stock")
@@ -53,14 +56,14 @@ public class ItemComponentController {
     @GetMapping("/add-item")
     public String getAddItemForm(Model model) {
         model.addAttribute("item", new Item());
-        model.addAttribute("categoriesList", factory.getCategories());
-        model.addAttribute("producersList", factory.getProducers());
+        model.addAttribute("categoriesList", repository.getAllCategories());
+        model.addAttribute("producersList", repository.getAllProducers());
         return "add-item";
     }
 
     @PostMapping("/add-new-item")
     public String addNewItem(@ModelAttribute ("item") Item item) {
-        
+
         return "redirect:/";
     }
 
