@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
+import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.model.Item;
 import pl.infoshare.model.Pack;
@@ -19,9 +20,12 @@ public class ItemComponentController {
 
     private final ItemComponentService service;
     private final MenuObjectService menuService;
+    private final DataFactory factory = DataFactory.getINSTANCE;
+    private ItemComponentRepositoryImpl repository;
 
-    public ItemComponentController(ItemComponentService service, MenuObjectService menuService) {
+    public ItemComponentController(ItemComponentService service, MenuObjectService menuService, ItemComponentRepositoryImpl repository) {
         this.service = service;
+        this.repository = repository;
         this.menuService = menuService;
     }
 
@@ -124,8 +128,8 @@ public class ItemComponentController {
     @GetMapping("/add-item")
     public String getAddItemForm(Model model) {
         model.addAttribute("item", new Item());
-        model.addAttribute("categoriesList", factory.getCategories());
-        model.addAttribute("producersList", factory.getProducers());
+        model.addAttribute("categoriesList", repository.getAllCategories());
+        model.addAttribute("producersList", repository.getAllProducers());
         return "add-item";
     }
 
