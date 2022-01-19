@@ -1,7 +1,15 @@
 package pl.infoshare.model;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class ItemComponent {
     private int id;
     private int itemCode; //producer serial number
@@ -11,9 +19,6 @@ public abstract class ItemComponent {
     private double weight;
     private LocalDateTime expirationDate;
     private Warehouse localization;
-
-    public ItemComponent() {
-    }
 
     public ItemComponent(int id, String name, Category category, Producer producer) {
         this.id = id;
@@ -28,46 +33,11 @@ public abstract class ItemComponent {
         this.producer = producer;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Producer getProducer() {
-        return producer;
-    }
-
-    public void setProducer(Producer producer) {
-        this.producer = producer;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     @Override
     public String toString() {
-        return name +
+        return  name +
                 ", Category: " + category +
                 ", Producer: " + producer;
+
     }
 }
