@@ -1,5 +1,8 @@
 package pl.infoshare.model;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Address {
     private String country;
     private String city;

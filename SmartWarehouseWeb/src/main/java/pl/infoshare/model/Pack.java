@@ -1,12 +1,12 @@
 package pl.infoshare.model;
 
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 
+@NoArgsConstructor
 public class Pack extends ItemComponent{
     private ArrayList<ItemComponent> items;
-
-    public Pack() {
-    }
 
     public Pack(String name, Category category, Producer producer) {
         super(name, category, producer);
