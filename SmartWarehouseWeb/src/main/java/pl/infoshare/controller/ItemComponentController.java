@@ -2,6 +2,11 @@ package pl.infoshare.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.infoshare.dataFactory.DataFactory;
+import pl.infoshare.model.Item;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.model.Item;
 import pl.infoshare.model.Pack;
@@ -43,6 +48,10 @@ public class ItemComponentController {
         return "delete-product";
     }
 
+    @GetMapping("/edit-product")
+    public String editItem() {
+        return "edit-product";
+    }
     @GetMapping("/product/{id}")
     public String getProduct(@PathVariable("id") int id, Model model) {
         model.addAttribute("item", service.getItemComponentById(id).get());
@@ -113,8 +122,17 @@ public class ItemComponentController {
 
 
     @GetMapping("/add-item")
-    public String getAddItemForm() {
+    public String getAddItemForm(Model model) {
+        model.addAttribute("item", new Item());
+        model.addAttribute("categoriesList", factory.getCategories());
+        model.addAttribute("producersList", factory.getProducers());
         return "add-item";
+    }
+
+    @PostMapping("/add-new-item")
+    public String addNewItem(@ModelAttribute ("item") Item item) {
+
+        return "redirect:/";
     }
 
     @GetMapping("/add-pack")

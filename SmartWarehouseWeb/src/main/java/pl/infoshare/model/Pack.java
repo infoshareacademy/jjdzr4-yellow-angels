@@ -9,6 +9,9 @@ public class Pack extends ItemComponent {
     public Pack() {
     }
 
+    public Pack() {
+    }
+
     public Pack(String name, Category category, Producer producer) {
         super(name, category, producer);
         items = new HashMap<>();
