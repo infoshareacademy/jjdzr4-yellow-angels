@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
 import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,7 @@ public class ItemComponentController {
 
     private final ItemComponentService service;
     private final MenuObjectService menuService;
-    private final DataFactory factory = DataFactory.getINSTANCE;
-    private ItemComponentRepositoryImpl repository;
+    private final ItemComponentRepositoryImpl repository;
 
     public ItemComponentController(ItemComponentService service, MenuObjectService menuService, ItemComponentRepositoryImpl repository) {
         this.service = service;
@@ -126,17 +124,22 @@ public class ItemComponentController {
 
 
     @GetMapping("/add-item")
-    public String getAddItemForm(Model model) {
+    public String getAddItem(Model model) {
         model.addAttribute("item", new Item());
         model.addAttribute("categoriesList", repository.getAllCategories());
         model.addAttribute("producersList", repository.getAllProducers());
         return "add-item";
     }
 
-    @PostMapping("/add-new-item")
-    public String addNewItem(@ModelAttribute ("item") Item item) {
+    @GetMapping("/add-new-item")
+    public String getAddItemForm() {
+        return "redirect:/index";
+    }
 
-        return "redirect:/";
+    @PostMapping("/add-new-item")
+    public String addNewItem(@ModelAttribute("item") Item item) {
+        service.saveItem(item);
+        return "redirect:/products";
     }
 
     @GetMapping("/add-pack")

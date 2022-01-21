@@ -10,25 +10,27 @@
 <body>
 <div id="mainContainer">
     <form th:action="@{/add-new-item}" th:object="${item}" method="post">
-        <label th:for="name" th:field="*{name}" th:text="#{itemComponent.name}"></label>
-            <input type="text" th:id="name">
+        <label th:for="name" th:text="#{itemComponent.name}"></label>
+        <input type="text" th:id="name" th:field="*{name}" />
         <br>
         <label for="categories" th:text="#{itemComponent.category}"></label>
-        <select id="categories" name="categories" th:field="*{category}"/>
-        <option th:each="cat : ${categoriesList}"
-                th:text="${cat}"
-                th:value="${cat.id}"></option>
+        <select id="categories" name="categories" th:field="*{category.id}">
+            <option th:each="cat : ${categoriesList}"
+                    th:text="${cat}"
+                    th:value="${cat.id}">
+            </option>
         </select>
         <br>
         <label for="producers" th:text="#{itemComponent.producer}"></label>
-        <select id="producers" name="producers" th:field="*{producer}"/>
-        <option th:each="prod : ${producersList}"
-                th:text="${prod}"
-                th:value="${prod.id}"></option>
+        <select id="producers" name="producers" th:field="*{producer.id}">
+            <option th:each="prod : ${producersList}"
+                    th:text="${prod}"
+                    th:value="${prod.id}">
+            </option>
         </select>
         <br>
-        <button type="button" class="btn btn-success" th:text="#{button.add}"></button>
-        <button type="button" class="btn btn-danger" th:text="#{button.cancel}"></button>
+        <button type="submit" class="btn btn-success" th:text="#{button.add}"></button>
+        <button type="reset" class="btn btn-danger" th:text="#{button.cancel}"></button>
 
     </form>
 </div>

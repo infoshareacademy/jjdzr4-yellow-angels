@@ -61,7 +61,7 @@ public class ItemComponentRepositoryImpl implements ItemComponentRepository{
 
     @Override
     public void saveItem(Item item) {
-        getAllItems().add(item);
+        items.add(item);
     }
 
     @Override

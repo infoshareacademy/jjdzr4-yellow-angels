@@ -1,6 +1,11 @@
 package pl.infoshare.service;
 
 import org.springframework.stereotype.Service;
+import pl.infoshare.model.Category;
+import pl.infoshare.model.Item;
+import pl.infoshare.model.ItemComponent;
+import pl.infoshare.model.Producer;
+import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import pl.infoshare.model.*;
 import pl.infoshare.repository.ItemComponentRepository;
 
