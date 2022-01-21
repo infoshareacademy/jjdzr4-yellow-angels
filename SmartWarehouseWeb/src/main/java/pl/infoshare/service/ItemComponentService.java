@@ -7,6 +7,7 @@ import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Producer;
 import pl.infoshare.repository.ItemComponentRepositoryImpl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +20,13 @@ public class ItemComponentService {
         this.repository = repository;
     }
 
-    public List<ItemComponent> getAll(){
+    public List<ItemComponent> getAll() {
         return repository.getAll();
     }
-    public void saveItem(Item item){
-        item.setId(0);
+
+    public void saveItem(Item item) {
+        int newId = generateId();
+        item.setId(newId);
 
         int newItemCategoryId = item.getCategory().getId();
         Optional<Category> category = repository.getCategoryById(newItemCategoryId);
@@ -34,6 +37,10 @@ public class ItemComponentService {
         producer.ifPresent(item::setProducer);
 
         repository.saveItem(item);
+    }
+
+    private int generateId() {
+        return getAll().stream().max(Comparator.comparing(ItemComponent::getId)).get().getId() + 1;
     }
 
 }
