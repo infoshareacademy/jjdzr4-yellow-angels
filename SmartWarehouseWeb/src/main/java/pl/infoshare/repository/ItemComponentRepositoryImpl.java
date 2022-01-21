@@ -10,16 +10,18 @@ import java.util.Optional;
 @Repository
 public class ItemComponentRepositoryImpl implements ItemComponentRepository{
 
+    private final List<Category> categories = getAllCategories();
+    private final List<Producer> producers = getAllProducers();
+    private final List<Item> items = new ArrayList<>(List.of(
+            new Item(1, "Item 1", categories.get(0), producers.get(0)),
+            new Item(6, "Item 11", categories.get(0), producers.get(0)),
+            new Item(2, "Item 2", categories.get(0), producers.get(1)),
+            new Item(3, "Item 3", categories.get(1), producers.get(2)),
+            new Item(4, "Item 4", categories.get(2), producers.get(0))));
+
     @Override
     public List<Item> getAllItems() {
-        List<Category> categories = getAllCategories();
-        List<Producer> producers = getAllProducers();
-        return new ArrayList<>(List.of(
-                new Item(1, "Item 1", categories.get(0), producers.get(0)),
-                new Item(6, "Item 11", categories.get(0), producers.get(0)),
-                new Item(2, "Item 2", categories.get(0), producers.get(1)),
-                new Item(3, "Item 3", categories.get(1), producers.get(2)),
-                new Item(4, "Item 4", categories.get(2), producers.get(0))));
+        return items;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class ItemComponentRepositoryImpl implements ItemComponentRepository{
 
     @Override
     public void saveItem(Item item) {
-        getAllItems().add(item);
+        items.add(item);
     }
 
     @Override
