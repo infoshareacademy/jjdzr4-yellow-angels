@@ -136,10 +136,15 @@ public class ItemComponentController {
         return "redirect:/index";
     }
 
-    @PostMapping("/add-new-item")
+    @PostMapping(value = "/add-new-item", params = "add")
     public String addNewItem(@ModelAttribute("item") Item item) {
         service.saveItem(item);
         return "redirect:/products";
+    }
+
+    @PostMapping(value = "/add-new-item", params = "cancel")
+    public String cancelNewItem() {
+        return "redirect:/add-product";
     }
 
     @GetMapping("/add-pack")
