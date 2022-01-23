@@ -79,7 +79,7 @@ body {
     text-align: var(--bs-body-text-align);
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
 }
 
 hr {
@@ -313,7 +313,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 label {
-    display: inline-block
+    /*display: inline-block*/
 }
 
 button {
@@ -328,7 +328,7 @@ button, input, optgroup, select, textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit
+    line-height: inherit;
 }
 
 button, select {
@@ -1873,7 +1873,7 @@ progress {
     margin-bottom: 1rem;
     color: #212529;
     vertical-align: top;
-    border-color: #dee2e6
+    border-color: #dee2e6;
 }
 
 .table > :not(caption) > * > * {
@@ -3878,7 +3878,9 @@ textarea.form-control-lg {
 }
 
 .dropdown-menu.show {
-    display: block
+    display: block;
+    position: relative;
+    z-index: 100;
 }
 
 .dropdown-header {
@@ -4133,7 +4135,7 @@ textarea.form-control-lg {
     display: flex;
     flex-wrap: inherit;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .navbar-brand {
@@ -4142,7 +4144,7 @@ textarea.form-control-lg {
     margin-right: 1rem;
     font-size: 1.25rem;
     text-decoration: none;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .navbar-nav {
@@ -4159,7 +4161,7 @@ textarea.form-control-lg {
 }
 
 .navbar-nav .dropdown-menu {
-    position: static
+    position: static;
 }
 
 .navbar-text {
@@ -4351,7 +4353,7 @@ textarea.form-control-lg {
     }
 
     .navbar-expand-lg .navbar-nav .dropdown-menu {
-        position: absolute
+        position: absolute;
     }
 
     .navbar-expand-lg .navbar-nav .nav-link {

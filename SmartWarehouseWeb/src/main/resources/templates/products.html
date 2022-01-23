@@ -1,17 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SW:Lista produktów</title>
-    <link rel="stylesheet" href="awsm_mischka.css">
+    <link type="text/css" rel="stylesheet" th:href="@{/bootstrap.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/awsm_mischka.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/additional_styles.css}">
+    <title th:text="#{title.products}"></title>
 </head>
 <body>
-<p>Lista produktów:</p>
-<p>
-<ul th:each="item: ${items}">
-    <li th:text="${item}"></li>
-</ul>
-</p>
+<div th:insert="menu.html :: mainNavbar"></div>
+<div id="mainContainer">
+
+    <h1 th:text="#{itemComponent.allProducts}"></h1>
+
+    <div>
+        <h2 th:text="#{itemComponent.items}"></h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col" th:text="#{tableHeadline.name}"></th>
+                <th scope="col" th:text="#{tableHeadline.category}"></th>
+                <th scope="col" th:text="#{tableHeadline.producer}"></th>
+                <th scope="col" th:text="#{tableHeadline.details}"></th>
+                <th scope="col" th:text="#{tableHeadline.edit}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}" class="center_table">
+                <th scope="row" th:text="${item.name}"></th>
+                <th scope="row" th:text="${item.category}"></th>
+                <th scope="row" th:text="${item.producer}"></th>
+                <th scope="row">
+                    <form th:action="@{/product/{id} (id=${item.id})}" th:method="get">
+                        <button type="submit" name="showItem" class="btn btn-success" th:text="#{button.show}"></button>
+                    </form>
+                </th>
+                <th scope="row">
+                    <form th:action="@{/edit-item/{id} (id=${item.id})}" th:method="get">
+                        <button type="submit" name="editItem" class="btn btn-primary" th:text="#{button.edit}"></button>
+                    </form>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h2 th:text="#{itemComponent.packs}"></h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col" th:text="#{tableHeadline.name}"></th>
+                <th scope="col" th:text="#{tableHeadline.category}"></th>
+                <th scope="col" th:text="#{tableHeadline.producer}"></th>
+                <th scope="col" th:text="#{tableHeadline.details}"></th>
+                <th scope="col" th:text="#{tableHeadline.edit}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pack: ${packs}">
+                <th scope="row" th:text="${pack.name}"></th>
+                <th scope="row" th:text="${pack.category}"></th>
+                <th scope="row" th:text="${pack.producer}"></th>
+                <th scope="row">
+                    <form th:action="@{/product/{id} (id=${pack.id})}" th:method="get">
+                        <button type="submit" name="showPack" class="btn btn-success" th:text="#{button.show}"></button>
+                    </form>
+                </th>
+                <th scope="row">
+                    <form th:action="@{/edit-pack/{id} (id=${pack.id})}" th:method="get">
+                        <button type="submit" name="editPack" class="btn btn-primary" th:text="#{button.edit}"></button>
+                    </form>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- mainContainer -->
+<footer th:insert="footer.html :: mainFooter"></footer>
 </body>
 </html>
