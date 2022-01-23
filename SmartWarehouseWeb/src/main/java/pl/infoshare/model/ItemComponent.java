@@ -5,14 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class ItemComponent {
+
+    private static final String NOT_EMPTY_MESSAGE = "Field cannot be empty";
+
     private int id;
     private int itemCode; //producer serial number
+    @NotEmpty(message = NOT_EMPTY_MESSAGE)
     private String name;
     private Category category;
     private Producer producer;
@@ -35,7 +41,7 @@ public abstract class ItemComponent {
 
     @Override
     public String toString() {
-        return  name +
+        return name +
                 ", Category: " + category +
                 ", Producer: " + producer;
 
