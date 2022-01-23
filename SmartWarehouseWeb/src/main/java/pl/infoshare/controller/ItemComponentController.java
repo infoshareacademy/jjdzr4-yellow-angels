@@ -3,9 +3,7 @@ package pl.infoshare.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.infoshare.dataFactory.DataFactory;
 import pl.infoshare.model.Item;
-import pl.infoshare.model.ItemComponent;
 import pl.infoshare.model.Pack;
 import pl.infoshare.service.ItemComponentService;
 import pl.infoshare.service.MenuObjectService;
@@ -16,7 +14,6 @@ public class ItemComponentController {
 
     private final ItemComponentService service;
     private final MenuObjectService menuService;
-    private final DataFactory factory = DataFactory.getINSTANCE;
 
     public ItemComponentController(ItemComponentService service, MenuObjectService menuService) {
         this.service = service;
@@ -31,8 +28,8 @@ public class ItemComponentController {
     @GetMapping("/products")
     public String getAll(Model model) {
         model.addAttribute("menuObjects", menuService.getMenu());
-        model.addAttribute("items", factory.getItems());
-        model.addAttribute("packs", factory.getPacks());
+        model.addAttribute("items", service.getItems());
+        model.addAttribute("packs", service.getPacks());
         return "products";
     }
 
@@ -48,15 +45,15 @@ public class ItemComponentController {
 
     @GetMapping("/product/{id}")
     public String getProduct(@PathVariable("id") int id, Model model) {
-        model.addAttribute("item", factory.getItemComponentById(id));
+        model.addAttribute("item", service.getItemComponentById(id).get());
         return "product";
     }
 
     @GetMapping("/edit-item/{id}")
     public String editItem(@PathVariable("id") int id, Model model) {
-        model.addAttribute("item", factory.getItemComponentById(id));
-        model.addAttribute("categoriesList", factory.getCategories());
-        model.addAttribute("producersList", factory.getProducers());
+        model.addAttribute("item", service.getItemById(id).get());
+        model.addAttribute("categoriesList", service.getCategories());
+        model.addAttribute("producersList", service.getProducers());
         return "edit-item";
     }
 
@@ -71,21 +68,21 @@ public class ItemComponentController {
     }
 
     @PutMapping(path = "/edit-item/{id}", params = "cancel")
-    public String cancelUpdateItem(@PathVariable int id){
+    public String cancelUpdateItem(@PathVariable int id) {
         return "redirect:/products";
     }
 
     @GetMapping("/edit-pack/{id}")
     public String editPack(@PathVariable("id") int id, Model model) {
-        Pack pack = (Pack) factory.getItemComponentById(id);
+        Pack pack = service.getPackById(id).get();
         model.addAttribute("menuObjects", menuService.getMenu());
 //        model.addAttribute("pack", factory.getItemComponentById(id));
         model.addAttribute("pack", pack);
 //        model.addAttribute("currentPackItems", pack.getItems().keySet());
         model.addAttribute("currentPackItems", pack.getItems());
-        model.addAttribute("items", factory.getItems());
-        model.addAttribute("categoriesList", factory.getCategories());
-        model.addAttribute("producersList", factory.getProducers());
+        model.addAttribute("items", service.getItems());
+        model.addAttribute("categoriesList", service.getCategories());
+        model.addAttribute("producersList", service.getProducers());
         return "edit-pack";
     }
 
@@ -100,7 +97,7 @@ public class ItemComponentController {
     }
 
     @PutMapping(path = "/edit-pack/{id}", params = "cancel")
-    public String cancelUpdatePack(@PathVariable int id){
+    public String cancelUpdatePack(@PathVariable int id) {
         return "redirect:/products";
     }
 
@@ -110,7 +107,7 @@ public class ItemComponentController {
     }
 
     @GetMapping(path = "products", params = "editItem")
-        public String goToEditItem(@ModelAttribute("item") Item item){
+    public String goToEditItem(@ModelAttribute("item") Item item) {
         return "redirect:/edit-item/";
     }
 
