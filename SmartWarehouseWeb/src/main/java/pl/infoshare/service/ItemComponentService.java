@@ -1,11 +1,6 @@
 package pl.infoshare.service;
 
 import org.springframework.stereotype.Service;
-import pl.infoshare.model.Category;
-import pl.infoshare.model.Item;
-import pl.infoshare.model.ItemComponent;
-import pl.infoshare.model.Producer;
-import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import pl.infoshare.model.*;
 import pl.infoshare.repository.ItemComponentRepository;
 
@@ -62,10 +57,14 @@ public class ItemComponentService {
             ItemComponent existing = result.get();
             existing.setId(id);
             existing.setName(itemComponent.getName());
-            String categoryIdFromForm = itemComponent.getCategory().getName();
-            existing.setCategory(repository.getCategoryById(Integer.parseInt(categoryIdFromForm)).get());
-            String producerIdFromForm = itemComponent.getProducer().getName();
-            existing.setProducer(repository.getProducerById(Integer.parseInt(producerIdFromForm)).get());
+
+            int newItemCategoryId = itemComponent.getCategory().getId();
+            Optional<Category> category = repository.getCategoryById(newItemCategoryId);
+            category.ifPresent(existing::setCategory);
+
+            int newItemProducerId = itemComponent.getProducer().getId();
+            Optional<Producer> producer = repository.getProducerById(newItemProducerId);
+            producer.ifPresent(existing::setProducer);
         }
 
     }
