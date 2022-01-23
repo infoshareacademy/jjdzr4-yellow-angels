@@ -11,7 +11,9 @@
 <div id="mainContainer">
     <form th:action="@{/add-new-item}" th:object="${item}" method="post">
         <label th:for="name" th:text="#{itemComponent.name}"></label>
-        <input type="text" th:id="name" th:field="*{name}" />
+        <input type="text" th:id="name" th:field="*{name}"/>
+        <br>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         <br>
         <label for="categories" th:text="#{itemComponent.category}"></label>
         <select id="categories" name="categories" th:field="*{category.id}">

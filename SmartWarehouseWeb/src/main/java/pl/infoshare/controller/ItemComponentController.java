@@ -2,6 +2,7 @@ package pl.infoshare.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,8 @@ import pl.infoshare.model.Item;
 import pl.infoshare.model.Pack;
 import pl.infoshare.service.ItemComponentService;
 import pl.infoshare.service.MenuObjectService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping
@@ -133,11 +136,16 @@ public class ItemComponentController {
 
     @GetMapping("/add-new-item")
     public String getAddItemForm() {
-        return "redirect:/index";
+        return "redirect:/add-item";
     }
 
     @PostMapping(value = "/add-new-item", params = "add")
-    public String addNewItem(@ModelAttribute("item") Item item) {
+    public String addNewItem(@Valid @ModelAttribute("item") Item item, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("categoriesList", repository.getAllCategories());
+            model.addAttribute("producersList", repository.getAllProducers());
+            return "add-item";
+        }
         service.saveItem(item);
         return "redirect:/products";
     }
