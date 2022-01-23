@@ -15,6 +15,7 @@ public interface ItemComponentRepository {
     void savePack(Pack pack);
     Optional<Item> getItemById(int id);
     Optional<Pack> getPackById(int id);
+    Optional<ItemComponent> getItemComponentById(int id);
     Optional<Category> getCategoryById(int id);
     Optional<Producer> getProducerById(int id);
 }

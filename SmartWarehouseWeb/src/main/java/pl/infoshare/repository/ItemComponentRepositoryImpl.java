@@ -5,6 +5,7 @@ import pl.infoshare.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -29,7 +30,10 @@ public class ItemComponentRepositoryImpl implements ItemComponentRepository{
         List<Category> categories = getAllCategories();
         List<Producer> producers = getAllProducers();
         return new ArrayList<>(List.of(
-                new Pack(5, "Item 5", categories.get(2), producers.get(0))));
+                new Pack(5, "Item 5", categories.get(2), producers.get(0), Map.of(
+                        getItemById(1).get(), 2,
+                        getItemById(2).get(), 3
+                ))));
     }
 
     @Override
@@ -75,6 +79,12 @@ public class ItemComponentRepositoryImpl implements ItemComponentRepository{
     public Optional<Pack> getPackById(int id) {
         List<Pack> packs = getAllPacks();
         return packs.stream().filter(i -> i.getId() == id).findFirst();
+    }
+
+    @Override
+    public Optional<ItemComponent> getItemComponentById(int id) {
+        List<ItemComponent> itemComponents = getAll();
+        return itemComponents.stream().filter(i -> i.getId() == id).findFirst();
     }
 
     @Override
