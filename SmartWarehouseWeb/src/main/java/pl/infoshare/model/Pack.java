@@ -2,12 +2,13 @@ package pl.infoshare.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+
+@NoArgsConstructor
 public class Pack extends ItemComponent {
     private Map<ItemComponent, Integer> items;
-
-    public Pack() {
-    }
 
     public Pack(String name, Category category, Producer producer) {
         super(name, category, producer);

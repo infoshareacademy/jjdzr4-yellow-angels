@@ -45,3 +45,7 @@ footer {
 body footer {
     max-width: none;
 }
+
+#errors {
+    color: #c34138;
+}

@@ -1,9 +1,13 @@
 package pl.infoshare.model;
 
-public class Item extends ItemComponent {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public Item() {
-    }
+@Getter
+@Setter
+@NoArgsConstructor
+public class Item extends ItemComponent{
 
     public Item(String name, Category category, Producer producer) {
         super(name, category, producer);

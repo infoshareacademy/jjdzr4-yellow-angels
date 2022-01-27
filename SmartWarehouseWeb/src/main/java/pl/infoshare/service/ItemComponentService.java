@@ -24,15 +24,8 @@ public class ItemComponentService {
     public void saveItem(Item item) {
         int newId = generateId();
         item.setId(newId);
-
-        int newItemCategoryId = item.getCategory().getId();
-        Optional<Category> category = repository.getCategoryById(newItemCategoryId);
-        category.ifPresent(item::setCategory);
-
-        int newItemProducerId = item.getProducer().getId();
-        Optional<Producer> producer = repository.getProducerById(newItemProducerId);
-        producer.ifPresent(item::setProducer);
-
+        getCategoryOf(item).ifPresent(item::setCategory);
+        getProducerOf(item).ifPresent(item::setProducer);
         repository.saveItem(item);
     }
 
@@ -41,28 +34,35 @@ public class ItemComponentService {
     }
 
     public Item updateItem(Item item) {
-        updateBasicItemComponentInfo(item);
+        updateBasicItemComponentData(item);
         return item;
     }
 
     public Pack updatePack(Pack pack) {
-        updateBasicItemComponentInfo(pack);
+        updateBasicItemComponentData(pack);
         return pack;
     }
 
-    private void updateBasicItemComponentInfo(ItemComponent itemComponent) {
+    private void updateBasicItemComponentData(ItemComponent itemComponent) {
         int id = itemComponent.getId();
         Optional<ItemComponent> result = repository.getItemComponentById(id);
         if (result.isPresent()) {
             ItemComponent existing = result.get();
             existing.setId(id);
             existing.setName(itemComponent.getName());
-            String categoryIdFromForm = itemComponent.getCategory().getName();
-            existing.setCategory(repository.getCategoryById(Integer.parseInt(categoryIdFromForm)).get());
-            String producerIdFromForm = itemComponent.getProducer().getName();
-            existing.setProducer(repository.getProducerById(Integer.parseInt(producerIdFromForm)).get());
+            getCategoryOf(itemComponent).ifPresent(existing::setCategory);
+            getProducerOf(itemComponent).ifPresent(existing::setProducer);
         }
+    }
 
+    private Optional<Category> getCategoryOf(ItemComponent itemComponent) {
+        int newItemCategoryId = itemComponent.getCategory().getId();
+        return repository.getCategoryById(newItemCategoryId);
+    }
+
+    private Optional<Producer> getProducerOf(ItemComponent itemComponent) {
+        int newItemCategoryId = itemComponent.getProducer().getId();
+        return repository.getProducerById(newItemCategoryId);
     }
 
     public List<Item> getItems() {

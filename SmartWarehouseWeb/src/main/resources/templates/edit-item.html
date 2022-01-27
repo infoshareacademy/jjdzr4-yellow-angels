@@ -21,7 +21,7 @@
             <br>
 
             <label for="categories" th:text="#{itemComponent.category}"></label>
-            <select id="categories" name="categories" th:field="*{category}"/>
+            <select id="categories" name="categories" th:field="*{category.id}"/>
             <option th:each="cat : ${categoriesList}"
                     th:value="${cat.id}"
                     th:text="${cat}"
@@ -32,7 +32,7 @@
             <br>
 
             <label for="producers" th:text="#{itemComponent.producer}"></label>
-            <select id="producers" name="producers" th:field="*{producer}"/>
+            <select id="producers" name="producers" th:field="*{producer.id}"/>
             <option th:each="prod : ${producersList}"
                     th:value="${prod.id}"
                     th:text="${prod}"
