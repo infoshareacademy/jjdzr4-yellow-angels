@@ -25,7 +25,7 @@
             <option th:each="cat : ${categoriesList}"
                     th:value="${cat.id}"
                     th:text="${cat}"
-                    th:selected="${cat} == ${item.category}">
+                    th:selected="${cat.id} == ${item.category.id}">
             </option>
             </select>
 
@@ -36,7 +36,7 @@
             <option th:each="prod : ${producersList}"
                     th:value="${prod.id}"
                     th:text="${prod}"
-                    th:selected="${prod} == ${item.producer}">
+                    th:selected="${prod.id} == ${item.producer.id}">
             </option>
             </select>
 
