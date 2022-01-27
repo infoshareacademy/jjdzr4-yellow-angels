@@ -3,14 +3,10 @@ package pl.infoshare.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import pl.infoshare.model.Item;
-import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.model.Item;
 import pl.infoshare.model.Pack;
+import pl.infoshare.repository.ItemComponentRepositoryImpl;
 import pl.infoshare.service.ItemComponentService;
 import pl.infoshare.service.MenuObjectService;
 
@@ -57,6 +53,7 @@ public class ItemComponentController {
     public String editItem() {
         return "edit-product";
     }
+
     @GetMapping("/product/{id}")
     public String getProduct(@PathVariable("id") int id, Model model) {
         model.addAttribute("item", service.getItemComponentById(id).get());
@@ -128,6 +125,7 @@ public class ItemComponentController {
 
     @GetMapping("/add-item")
     public String getAddItem(Model model) {
+        model.addAttribute("menuObjects", menuService.getMenu());
         model.addAttribute("item", new Item());
         model.addAttribute("categoriesList", repository.getAllCategories());
         model.addAttribute("producersList", repository.getAllProducers());
@@ -142,6 +140,7 @@ public class ItemComponentController {
     @PostMapping(value = "/add-new-item", params = "add")
     public String addNewItem(@Valid @ModelAttribute("item") Item item, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("menuObjects", menuService.getMenu());
             model.addAttribute("categoriesList", repository.getAllCategories());
             model.addAttribute("producersList", repository.getAllProducers());
             return "add-item";
